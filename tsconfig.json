@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./config/tsconfig-base",
+  "include": [
+    "**/*.ts",
+    "**/*.mts",
+  ],
+  "exclude": [
+    "node_modules",
+    "**/dist",
+  ]
+}
