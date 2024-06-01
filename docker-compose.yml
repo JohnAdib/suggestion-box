@@ -7,21 +7,25 @@ services:
       dockerfile: Dockerfile
     ports:
       - "7001:7001"
+    # start the backend with the following environment variables
+    command: ["npm", "run", "start"]
     environment:
       - MONGODB_URI=mongodb://mongo:27017/feedback
     depends_on:
       - mongo
 
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "7002:7002"
-    depends_on:
-      - backend
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "7002:7002"
+  #   depends_on:
+  #     - backend
 
   mongo:
     image: mongo
+    volumes:
+      - ./data:/data/db
     ports:
       - "27017:27017"
