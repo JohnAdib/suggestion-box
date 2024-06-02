@@ -1,1 +1,1 @@
-export { fireHappyServer } from './create';
+export { fireHappyServer } from './fire';

@@ -1,6 +1,6 @@
-const winston = require('winston');
+import winston from 'winston';
 
-export const logger = winston.createLogger({
+export const logger: winston.Logger = winston.createLogger({
   level: 'silly',
   format: winston.format.combine(
     winston.format.colorize(),
@@ -15,9 +15,6 @@ export const logger = winston.createLogger({
         winston.format.colorize(),
         winston.format.cli(),
       ),
-      colororize: true,
-      prettyPrint: true,
-      json: true,
     }),
   ],
 });

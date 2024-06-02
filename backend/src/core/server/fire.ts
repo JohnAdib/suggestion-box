@@ -7,8 +7,7 @@ import type { IServer } from './i-server';
 export function fireHappyServer({
   port = 3000,
   apiEndpoints,
-}: IServer)
-  : void {
+}: IServer): void {
 
   const happyServer: Application = express();
 
