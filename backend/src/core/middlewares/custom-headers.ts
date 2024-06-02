@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 
-export const middlewareCustomHeader = (
+export const customHeaders = (
   _req: Request,
   res: Response,
   next: NextFunction,

@@ -3,18 +3,11 @@ type ResponseMessageTypes =
 | 'warn'
 | 'info'
 | 'success'
-| 'field';
+| 'path';
 
 export interface IResponseJsonMessage {
   msg: string;
-  title?: string;
   type?: ResponseMessageTypes;
+  title?: string;
   path?: string;
-}
-
-export interface IResponseJson {
-  okay: boolean;
-  messages: Array<IResponseJsonMessage>;
-  result: any;
-  meta?: any;
 }

@@ -1,11 +1,10 @@
-import { type IResponseJson } from '../interfaces/i-response-json';
+import { type IResponseJson } from '@interfaces';
 
 export const responseApiHello: IResponseJson = {
   okay: true,
   result: {
     'version': process.env.VERSION,
     'datetime': new Date().toISOString(),
-    'latestAPI': '/v1',
     // TODO: add swagger documentation link
     'documentation': '/docs',
   },

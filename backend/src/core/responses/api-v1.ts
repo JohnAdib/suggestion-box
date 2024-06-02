@@ -1,4 +1,4 @@
-import { type IResponseJson } from '../interfaces/i-response-json';
+import { type IResponseJson } from '@interfaces';
 
 export const responseApiV1: IResponseJson = {
   okay: true,
