@@ -1,6 +1,6 @@
 import type { IResponseJson } from '@interfaces';
 import type { ICreateFeedback } from '@v1Feedback/interfaces';
-import { v1FeedbackRepository } from '@v1Feedback/repositories';
+import { v1FeedbackService } from '@v1Feedback/services';
 import { validateWithSchema } from '@validator';
 import type { Request, Response } from 'express';
 import xss from 'xss';
@@ -23,9 +23,7 @@ export const createFeedbackController = async (
     message: xss(validatedData.message.trim()),
   };
 
-  console.warn(sanitizedData);
-
-  const createdFeedback = await v1FeedbackRepository.create(sanitizedData);
+  const createdFeedback = await v1FeedbackService.list(sanitizedData);
 
   const apiResponse: IResponseJson = {
     okay: true,
