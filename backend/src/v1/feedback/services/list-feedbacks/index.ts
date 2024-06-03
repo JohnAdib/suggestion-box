@@ -11,7 +11,6 @@ export async function listFeedbacksService(
   // create a meta object for the response
   const totalfeedbackCounts = await v1FeedbackRepository.total();
   const totalPages = Math.ceil(totalfeedbackCounts / inputData.limit);
-
   const apiResponseMeta: IResponseJsonMeta = {
     page: inputData.page,
     perPage: inputData.limit,
@@ -20,22 +19,15 @@ export async function listFeedbacksService(
     totalCount: totalfeedbackCounts,
   };
 
-  const apiResponse: IResponseJson = {
-    okay: true,
-    result: feedbacks,
-    meta: apiResponseMeta,
-  };
-
   // if the feedbacks are found, return them
   if (feedbacks.length) {
+    const apiResponse: IResponseJson = {
+      okay: true,
+      result: feedbacks,
+      meta: apiResponseMeta,
+    };
     return apiResponse;
   }
-
-  apiResponse.okay = false;
-  apiResponse.statusCode = 404;
-  apiResponse.messages = [{
-    'msg': 'No feedback found with the given criteria',
-  }];
 
   // if there are no filter and no feedbacks means there are no feedbacks at all!
   const isEmptyForTheFirstTime = totalfeedbackCounts === 0;

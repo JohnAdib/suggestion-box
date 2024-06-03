@@ -1,6 +1,6 @@
 export const feedbackTypesList = [
-  'Bug',
-  'Suggestion',
+  'bug',
+  'suggestion',
 ] as const;
 
 export type FeedbackTypesType = typeof feedbackTypesList[number];
