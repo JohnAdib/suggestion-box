@@ -1,4 +1,3 @@
-import type { IResponseJson } from '@interfaces';
 import type { ICreateFeedback } from '@v1Feedback/interfaces';
 import { v1FeedbackService } from '@v1Feedback/services';
 import { validateWithSchema } from '@validator';
@@ -23,16 +22,13 @@ export const createFeedbackController = async (
     message: xss(validatedData.message.trim()),
   };
 
-  const createdFeedback = await v1FeedbackService.list(sanitizedData);
+  const apiResponse = await v1FeedbackService.create(sanitizedData);
 
-  const apiResponse: IResponseJson = {
-    okay: true,
-    result: createdFeedback,
-    messages: [{
-      type: 'success',
-      title: 'Feedback Received',
-      msg: 'Your feedback has been successfully posted! Thank you for your time!',
-    }],
-  };
+  apiResponse.messages = [{
+    type: 'success',
+    title: 'Feedback Received',
+    msg: 'Your feedback has been successfully posted! Thank you for your time!',
+  }];
+
   res.status(201).send(apiResponse);
 };

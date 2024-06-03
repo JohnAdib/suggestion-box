@@ -9,13 +9,23 @@ export const listFeedbackController = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const inputData = req.query;
+  const inputData = req.query as unknown as IListFeedback;
   const validatedData: IListFeedback = validateWithSchema({
     schema: listFeedbackSchema,
     data: inputData,
   });
 
-  const feedbacks = await v1FeedbackService.list(validatedData);
+  // set the default values if not provided
+  let {
+    page = 1,
+    limit = 10,
+    order = 'asc',
+    orderby = 'date',
+    type,
+  } = validatedData;
+  const updatedData: IListFeedback = { page, limit, order, orderby, type };
+
+  const feedbacks = await v1FeedbackService.list(updatedData);
 
   const apiResponse: IResponseJson = {
     okay: true,

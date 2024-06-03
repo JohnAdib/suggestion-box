@@ -11,7 +11,7 @@ interface IBuildSort {
 export const buildSort =
 ({ orderby, order }: IListFeedbackSort)
 :IBuildSort => {
-  const myFilter: FeedbackOrderbyType = orderby || 'date';
+  const myFilter: FeedbackOrderbyType = orderby;
 
   const orderValue = order === 'desc' ? -1 : 1;
   const sortBy: IBuildSort = {

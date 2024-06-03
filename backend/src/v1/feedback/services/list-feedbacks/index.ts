@@ -1,21 +1,53 @@
 import { error } from '@errors';
-import type { IListFeedback, ISavedFeedback } from '@v1Feedback/interfaces';
+import type { IListFeedback } from '@v1Feedback/interfaces';
 import { v1FeedbackRepository } from '@v1Feedback/repositories';
+import type { IResponseJson, IResponseJsonMeta } from 'src/core/interfaces';
 
 export async function listFeedbacksService(
   inputData: IListFeedback,
-): Promise<ISavedFeedback[]> {
+): Promise<IResponseJson> {
   const feedbacks = await v1FeedbackRepository.list(inputData);
+
+  // create a meta object for the response
+  const totalfeedbackCounts = await v1FeedbackRepository.total();
+  const totalPages = Math.ceil(totalfeedbackCounts / inputData.limit);
+
+  const apiResponseMeta: IResponseJsonMeta = {
+    page: inputData.page,
+    perPage: inputData.limit,
+    totalPages: totalPages,
+    count: feedbacks.length,
+    totalCount: totalfeedbackCounts,
+  };
+
+  const apiResponse: IResponseJson = {
+    okay: true,
+    result: feedbacks,
+    meta: apiResponseMeta,
+  };
 
   // if the feedbacks are found, return them
   if (feedbacks.length) {
-    return feedbacks;
+    return apiResponse;
   }
+
+  apiResponse.okay = false;
+  apiResponse.statusCode = 404;
+  apiResponse.messages = [{
+    'msg': 'No feedback found with the given criteria',
+  }];
 
   // if there are no filter and no feedbacks means there are no feedbacks at all!
-  if (Object.keys(inputData).length === 0) {
-    throw new error.client.NotFound('It seems our feedback box is feeling lonely. Could you drop a line?');
+  const isEmptyForTheFirstTime = totalfeedbackCounts === 0;
+  if (isEmptyForTheFirstTime) {
+    throw new error.client
+      .NotFound('It seems our suggestion box is feeling lonely. Could you drop a line?')
+      .setTitle('Echo! Echo! Echo! Anybody out there?')
+      .setMeta(apiResponseMeta);
   }
 
-  throw new error.client.NotFound('No feedback found with the given criteria');
+  throw new error.client
+    .NotFound('No feedback found with the given criteria :(')
+    .setTitle('Oops! No feedback found!')
+    .setMeta(apiResponseMeta);
 }

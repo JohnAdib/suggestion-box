@@ -9,31 +9,38 @@ export const errorHandling = (
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _next: NextFunction,
 ): void => {
-  const errCode = err?.statusCode || 501;
-  const errTitle = err?.title || 'Error (¬º-°)¬';
-  const errMessage = err?.message || 'Sorry, something went wrong!';
+  const defaultErrCode = 501;
+  const defaultErrTitle = 'Error (¬º-°)¬';
+  const defaultErrMessage = 'Sorry, something went wrong!';
+
+  const errTitle = err?.name || defaultErrTitle;
+  const errMessage = err?.message || defaultErrMessage;
+  const errStatusCode = err?.statusCode || defaultErrCode;
+  const errResult = err?.result || null;
+  const errMeta = err?.meta || undefined;
 
   const apiResponse: IResponseJson = {
     okay: false,
-    result: null,
-    messages: [{
-      type: 'error',
-      title: errTitle,
-      msg: errMessage,
-    }],
+    statusCode: errStatusCode,
+    result: errResult,
+    meta: errMeta,
+    messages: err.messages,
   };
 
-  // if there are messages, overwrite the default message
-  // mostly used for validation errors
-  if (err?.messages) {
-    apiResponse.messages = err.messages;
+  // if there are no messages, set one message with the error title and message
+  if (!err?.messages) {
+    const isError = errStatusCode >= 500;
+    const errType = isError ? 'error' : undefined;
+
+    apiResponse.messages = [{
+      type: errType,
+      title: errTitle,
+      msg: errMessage,
+    }];
+
   }
 
-  logger.error(errTitle, {
-    statusCode: errCode,
-    message: errMessage,
-    messages: err?.messages,
-  });
+  logger.error(errTitle, apiResponse);
 
-  res.status(errCode).json(apiResponse);
+  res.status(errStatusCode).json(apiResponse);
 };

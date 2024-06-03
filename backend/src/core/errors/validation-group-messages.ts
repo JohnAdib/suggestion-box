@@ -6,12 +6,9 @@ export class ValidationGroupMessages extends Error {
 
   public messages: IResponseJsonMessage[];
 
-  public title: string;
-
   constructor(messages: IResponseJsonMessage[]) {
     super('Validation Error');
     this.statusCode = 422;
     this.messages = messages;
-    this.title = 'ValidationError';
   }
 }
