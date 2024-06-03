@@ -1,3 +1,4 @@
+import { prepareFeedbackResponse } from '@v1Feedback/dto/prepare-feedback-response';
 import type { ICreateFeedback } from '@v1Feedback/interfaces';
 import { v1FeedbackRepository } from '@v1Feedback/repositories';
 import type { IResponseJson } from 'src/core/interfaces';
@@ -12,10 +13,11 @@ export async function createFeedbackService(
   // TODO: check for spam feedback
   // TODO: check for inappropriate feedback
   const createdFeedback = await v1FeedbackRepository.create(sanitizedData);
+  const formattedFeedback = prepareFeedbackResponse(createdFeedback);
 
   const apiResponse: IResponseJson = {
     okay: true,
-    result: createdFeedback,
+    result: formattedFeedback,
   };
 
   return apiResponse;

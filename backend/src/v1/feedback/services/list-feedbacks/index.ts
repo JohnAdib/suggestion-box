@@ -1,4 +1,5 @@
 import { error } from '@errors';
+import { prepareFeedbackListResponses } from '@v1Feedback/dto/prepare-feedback-list-response';
 import type { IListFeedback } from '@v1Feedback/interfaces';
 import { v1FeedbackRepository } from '@v1Feedback/repositories';
 import type { IResponseJson, IResponseJsonMeta } from 'src/core/interfaces';
@@ -7,6 +8,7 @@ export async function listFeedbacksService(
   inputData: IListFeedback,
 ): Promise<IResponseJson> {
   const feedbacks = await v1FeedbackRepository.list(inputData);
+  const formattedFeedbacks = prepareFeedbackListResponses(feedbacks);
 
   // create a meta object for the response
   const totalfeedbackCounts = await v1FeedbackRepository.total();
@@ -15,15 +17,15 @@ export async function listFeedbacksService(
     page: inputData.page,
     perPage: inputData.limit,
     totalPages: totalPages,
-    count: feedbacks.length,
+    count: formattedFeedbacks.length,
     totalCount: totalfeedbackCounts,
   };
 
   // if the feedbacks are found, return them
-  if (feedbacks.length) {
+  if (formattedFeedbacks.length) {
     const apiResponse: IResponseJson = {
       okay: true,
-      result: feedbacks,
+      result: formattedFeedbacks,
       meta: apiResponseMeta,
     };
     return apiResponse;
