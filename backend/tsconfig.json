@@ -28,6 +28,9 @@
       "@server": [
         "src/core/server/"
       ],
+      "@swagger": [
+        "src/core/swagger/"
+      ],
       "@validator": [
         "src/core/validator/"
       ],

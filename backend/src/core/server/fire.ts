@@ -1,7 +1,9 @@
 import { logger } from '@logger';
 import { middleware } from '@middlewares';
+import { swaggerSpecs } from '@swagger';
 import express, { type Application } from 'express';
 import helmet from 'helmet';
+import swaggerUi from 'swagger-ui-express';
 import type { IServer } from './i-server';
 
 export function fireHappyServer({
@@ -22,6 +24,9 @@ export function fireHappyServer({
 
   // routes
   happyServer.use(apiEndpoints);
+
+  // swagger documentation
+  happyServer.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
   // error handling
   happyServer.use(middleware.errorHandling);
