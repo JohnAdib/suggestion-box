@@ -15,11 +15,15 @@ export const FeedbackDbSchema: Schema = new Schema({
     enum: feedbackTypesList,
     required: true,
   },
+  title: {
+    type: String,
+    required: true,
+  },
   message: {
     type: String,
     required: true,
   },
-  date: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },
