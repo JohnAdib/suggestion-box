@@ -8,8 +8,10 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "@types/bad-words": "^3.0.3",
     "ajv": "^8.14.0",
     "ajv-formats": "^3.0.1",
+    "bad-words": "^3.0.4",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "helmet": "^7.1.0",

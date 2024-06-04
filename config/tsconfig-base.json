@@ -13,6 +13,7 @@
         "module": "ESNext",
         "moduleDetection": "force",
         "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true,
         "allowJs": true,
         "esModuleInterop": true,
         "noUnusedLocals": true,

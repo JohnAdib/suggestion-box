@@ -7,6 +7,6 @@ export function prepareFeedbackListResponses(
   // map over the feedbacks and prepare the response
   // filter out the feedbacks that are not valid
   return savedFeedbacks
-    .map(prepareFeedbackResponse)
-    .filter((feedback): feedback is ICreateFeedback => feedback !== null);
+    .map(prepareFeedbackResponse);
+  // .filter((feedback): feedback is ICreateFeedback => feedback !== null);
 }

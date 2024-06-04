@@ -1,18 +1,36 @@
+import { error } from '@errors';
+import type { IResponseJson } from '@interfaces';
 import { prepareFeedbackResponse } from '@v1Feedback/dto/prepare-feedback-response';
 import type { ICreateFeedback } from '@v1Feedback/interfaces';
 import { v1FeedbackRepository } from '@v1Feedback/repositories';
-import type { IResponseJson } from 'src/core/interfaces';
 
 export async function createFeedbackService(
-  sanitizedData: ICreateFeedback,
+  inputData: ICreateFeedback,
 ):Promise<IResponseJson> {
-  // TODO: check for duplicate feedbacks
+  // check for duplicate message
+  const duplicateMessageCount = await v1FeedbackRepository
+    .numberOfDuplicateMessage({ message: inputData.message });
+  if (duplicateMessageCount) {
+    throw new error.client
+      .Conflict("It seems like I've read this feedback before...")
+      .setTitle('Deja vu!');
+  }
 
-  // TODO: clean up the response
-  // TODO: check for duplicate feedback
-  // TODO: check for spam feedback
-  // TODO: check for inappropriate feedback
-  const createdFeedback = await v1FeedbackRepository.create(sanitizedData);
+  // prevent spamming by checking recent activity
+  const recentActivityWithinMinutes = 1;
+  const emailRecentActivityCount = await v1FeedbackRepository
+    .numberOfEmailRecentActivity({
+      email: inputData.email,
+      minutes: recentActivityWithinMinutes,
+    });
+  if (emailRecentActivityCount) {
+    throw new error.client
+      .TooManyRequests("Whoa there, Speedy Gonzales! Let's take a breather, shall we?")
+      .setTitle('Hold Your Horses!');
+  }
+
+  // create feedback
+  const createdFeedback = await v1FeedbackRepository.create(inputData);
   const formattedFeedback = prepareFeedbackResponse(createdFeedback);
 
   const apiResponse: IResponseJson = {

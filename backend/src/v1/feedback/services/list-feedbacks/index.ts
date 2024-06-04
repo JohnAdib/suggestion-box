@@ -1,8 +1,8 @@
 import { error } from '@errors';
+import type { IResponseJson, IResponseJsonMeta } from '@interfaces';
 import { prepareFeedbackListResponses } from '@v1Feedback/dto/prepare-feedback-list-response';
 import type { IListFeedback } from '@v1Feedback/interfaces';
 import { v1FeedbackRepository } from '@v1Feedback/repositories';
-import type { IResponseJson, IResponseJsonMeta } from 'src/core/interfaces';
 
 export async function listFeedbacksService(
   inputData: IListFeedback,
