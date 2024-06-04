@@ -1,5 +1,5 @@
-import type { ICreateFeedback, ISavedFeedback } from '@v1Feedback/interfaces';
 import Filter from 'bad-words';
+import type { ICreateFeedback, ISavedFeedback } from '../interfaces/index.js';
 
 export function prepareFeedbackResponse(
   savedFeedback: ISavedFeedback,

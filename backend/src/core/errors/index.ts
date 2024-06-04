@@ -1,7 +1,7 @@
-import { Conflict } from './conflict';
-import { NotFound } from './not-found';
-import { TooManyRequests } from './too-many-requests';
-import { ValidationGroupMessages } from './validation-group-messages';
+import { Conflict } from './conflict.js';
+import { NotFound } from './not-found.js';
+import { TooManyRequests } from './too-many-requests.js';
+import { ValidationGroupMessages } from './validation-group-messages.js';
 
 export const error = {
   client: {

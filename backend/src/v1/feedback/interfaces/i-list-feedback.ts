@@ -1,6 +1,4 @@
-import type { FeedbackOrderType } from './feedback-order';
-import type { FeedbackOrderbyType } from './feedback-order-by';
-import type { FeedbackTypesType } from './feedback-types';
+import type { FeedbackOrderbyType, FeedbackOrderType, FeedbackTypesType } from "./index.js";
 
 export interface IListFeedbackFilter {
   type: FeedbackTypesType;

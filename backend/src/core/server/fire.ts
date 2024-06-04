@@ -1,10 +1,10 @@
-import { logger } from '@logger';
-import { middleware } from '@middlewares';
-import { swaggerSpecs } from '@swagger';
 import express, { type Application } from 'express';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
-import type { IServer } from './i-server';
+import { logger } from '../logger/index.js';
+import { middleware } from '../middlewares/index.js';
+import { swaggerSpecs } from '../swagger/index.js';
+import type { IServer } from './i-server.js';
 
 export function fireHappyServer({
   port = 3000,

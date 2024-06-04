@@ -1,4 +1,4 @@
-import type { IResponseJsonMeta } from '../interfaces';
+import type { IResponseJsonMeta } from '../interfaces/index.js';
 
 export class Conflict extends Error {
 

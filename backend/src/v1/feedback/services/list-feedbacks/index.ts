@@ -1,8 +1,8 @@
-import { error } from '@errors';
-import type { IResponseJson, IResponseJsonMeta } from '@interfaces';
-import { prepareFeedbackListResponses } from '@v1Feedback/dto/prepare-feedback-list-response';
-import type { IListFeedback } from '@v1Feedback/interfaces';
-import { v1FeedbackRepository } from '@v1Feedback/repositories';
+import { error } from '../../../../core/errors/index.js';
+import type { IResponseJson, IResponseJsonMeta } from '../../../../core/interfaces/index.js';
+import { prepareFeedbackListResponses } from '../../dto/prepare-feedback-list-response.js';
+import type { IListFeedback } from '../../interfaces/index.js';
+import { v1FeedbackRepository } from '../../repositories/index.js';
 
 export async function listFeedbacksService(
   inputData: IListFeedback,

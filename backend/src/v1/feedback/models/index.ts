@@ -1,6 +1,6 @@
-import type { ISavedFeedback } from '@v1Feedback/interfaces';
 import mongoose from 'mongoose';
-import { FeedbackDbSchema } from './schema';
+import type { ISavedFeedback } from '../interfaces/index.js';
+import { FeedbackDbSchema } from './schema.js';
 
 export const feedbackModel =
   mongoose.model<ISavedFeedback>('Feedback', FeedbackDbSchema);

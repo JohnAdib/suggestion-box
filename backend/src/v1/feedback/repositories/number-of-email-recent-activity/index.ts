@@ -1,6 +1,6 @@
-import { feedbackModel } from '@v1Feedback/models';
+import { feedbackModel } from "../../models/index.js";
 
-interface INumberOfEmailRecentActivity {
+export interface INumberOfEmailRecentActivity {
   email: string;
   minutes: number;
 }

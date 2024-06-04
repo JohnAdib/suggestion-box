@@ -1,5 +1,5 @@
-import { logger } from '@logger';
 import type { NextFunction, Request, Response } from 'express';
+import { logger } from '../logger/index.js';
 
 const getStatusEmoji = (statusCode: number): string => {
   if (statusCode >= 100 && statusCode < 200) {

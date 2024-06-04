@@ -1,8 +1,8 @@
-import { asyncHandler } from './async-handler';
-import { customHeaders } from './custom-headers';
-import { errorHandling } from './error-handling';
-import { logRequests } from './log-requests';
-import { notFound404 } from './not-found-404';
+import { asyncHandler } from './async-handler.js';
+import { customHeaders } from './custom-headers.js';
+import { errorHandling } from './error-handling.js';
+import { logRequests } from './log-requests.js';
+import { notFound404 } from './not-found-404.js';
 
 export const middleware = {
   notFound404,

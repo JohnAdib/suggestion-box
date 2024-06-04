@@ -1,9 +1,9 @@
-import type { ICreateFeedback } from '@v1Feedback/interfaces';
-import { v1FeedbackService } from '@v1Feedback/services';
-import { validateWithSchema } from '@validator';
 import type { Request, Response } from 'express';
 import xss from 'xss';
-import { createFeedbackSchema } from './schema';
+import { validateWithSchema } from '../../../../core/validator/index.js';
+import type { ICreateFeedback } from '../../interfaces/index.js';
+import { v1FeedbackService } from '../../services/index.js';
+import { createFeedbackSchema } from './schema.js';
 
 export const createFeedbackController = async (
   req: Request,

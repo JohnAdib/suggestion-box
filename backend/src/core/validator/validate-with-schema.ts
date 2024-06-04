@@ -1,11 +1,12 @@
-import { error } from '@errors';
-import Ajv, {
-  type JSONSchemaType,
-  type Schema,
-  type ValidateFunction,
+import type {
+  JSONSchemaType,
+  Schema,
+  ValidateFunction,
 } from 'ajv';
+import { Ajv } from 'ajv';
 import addFormats from 'ajv-formats';
-import { ajvTransformValidationErrors } from './transform-validation-errors';
+import { error } from '../errors/index.js';
+import { ajvTransformValidationErrors } from './transform-validation-errors.js';
 
 interface IvalidateWithSchema<T> {
   schema: Schema | JSONSchemaType<T>;
@@ -27,7 +28,7 @@ export const validateWithSchema =
     allErrors: true,
     coerceTypes: true,
   });
-  addFormats(ajv);
+  addFormats.default(ajv);
 
   const validateFunction: ValidateFunction<T> = ajv.compile(schema);
   const valid = validateFunction(data);

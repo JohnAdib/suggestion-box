@@ -1,6 +1,6 @@
-import { middleware } from '@middlewares';
 import { Router } from 'express';
-import { v1FeedbackController } from './controllers';
+import { middleware } from '../../core/middlewares/index.js';
+import { v1FeedbackController } from './controllers/index.js';
 
 export const apiV1feedbackRoutes: Router = Router();
 

@@ -7,11 +7,13 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "7101:7001"
-    # start the backend with the following environment variables
+      - "${PORT}:${PORT}"
     command: ["npm", "run", "start"]
     environment:
-      - MONGODB_URI=mongodb://mongo:27017/feedback
+      - VERSION=${VERSION}
+      - PORT=${PORT}
+      # interact with mongo container in the same network
+      - MONGODB_URI=mongodb://mongo:27017/suggestion-box
     depends_on:
       - mongo
 
@@ -28,5 +30,6 @@ services:
     image: mongo
     volumes:
       - ./data:/data/db
-    ports:
-      - "27017:27017"
+    # expose the port to the host machine if needed
+    # ports:
+      # - "27017:27017"

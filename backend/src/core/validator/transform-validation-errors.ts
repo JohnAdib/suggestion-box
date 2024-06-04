@@ -1,5 +1,5 @@
-import type { IResponseJsonMessage } from '@interfaces';
 import type { ValidateFunction } from 'ajv';
+import type { IResponseJsonMessage } from '../interfaces/index.js';
 
 interface AjvTransformValidationErrorsInterface {
   validate: ValidateFunction;

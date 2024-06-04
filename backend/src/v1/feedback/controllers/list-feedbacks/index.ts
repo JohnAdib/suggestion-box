@@ -1,9 +1,9 @@
-import type { IResponseJson } from '@interfaces';
-import type { IListFeedback } from '@v1Feedback/interfaces';
-import { v1FeedbackService } from '@v1Feedback/services';
-import { validateWithSchema } from '@validator';
 import type { Request, Response } from 'express';
-import { listFeedbackSchema } from './schema';
+import type { IResponseJson } from '../../../../core/interfaces/index.js';
+import { validateWithSchema } from '../../../../core/validator/index.js';
+import type { IListFeedback } from '../../interfaces/index.js';
+import { v1FeedbackService } from '../../services/index.js';
+import { listFeedbackSchema } from './schema.js';
 
 export const listFeedbackController = async (
   req: Request,

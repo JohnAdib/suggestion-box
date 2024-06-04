@@ -1,1 +1,1 @@
-export { fireHappyServer } from './fire';
+export { fireHappyServer } from './fire.js';

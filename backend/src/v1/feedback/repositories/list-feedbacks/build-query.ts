@@ -1,7 +1,5 @@
-import type {
-  IListFeedbackFilter,
-  ISavedFeedback,
-} from '@v1Feedback/interfaces';
+import type { IListFeedbackFilter, ISavedFeedback } from "../../interfaces/index.js";
+
 
 export const buildQuery =
 ({ type }: IListFeedbackFilter)

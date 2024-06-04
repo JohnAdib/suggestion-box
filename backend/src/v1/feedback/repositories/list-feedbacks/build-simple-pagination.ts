@@ -1,4 +1,4 @@
-import type { IListFeedbackPagination } from '@v1Feedback/interfaces';
+import type { IListFeedbackPagination } from "../../interfaces/index.js";
 
 export const buildSimplePagination =
 ({ page, limit }: IListFeedbackPagination)

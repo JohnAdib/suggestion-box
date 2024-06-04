@@ -1,5 +1,5 @@
-import { feedbackTypesList } from '@v1Feedback/interfaces';
 import { Schema } from 'mongoose';
+import { feedbackTypesList } from '../interfaces/index.js';
 
 export const FeedbackDbSchema: Schema = new Schema({
   name: {

@@ -1,8 +1,5 @@
-import type {
-  FeedbackOrderbyType,
-  IListFeedbackSort,
-} from '@v1Feedback/interfaces';
 import type { SortOrder } from 'mongoose';
+import type { FeedbackOrderbyType, IListFeedbackSort } from '../../interfaces/index.js';
 
 interface IBuildSort {
   [key: string]: SortOrder

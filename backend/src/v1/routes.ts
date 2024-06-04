@@ -1,6 +1,6 @@
-import { responseApiV1 } from '@responses';
 import { Router, type Request, type Response } from 'express';
-import { apiV1feedbackRoutes } from './feedback/routes';
+import { responseApiV1 } from '../core/responses/index.js';
+import { apiV1feedbackRoutes } from './feedback/routes.js';
 
 export const apiV1Endpoints: Router = Router();
 

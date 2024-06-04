@@ -1,4 +1,4 @@
-import { feedbackModel } from '@v1Feedback/models';
+import { feedbackModel } from "../../models/index.js";
 
 export const numberOfDuplicateMessage =
 async ({ message }: { message: string })

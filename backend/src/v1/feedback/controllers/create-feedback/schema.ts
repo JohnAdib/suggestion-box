@@ -1,5 +1,5 @@
-import { feedbackTypesList, type ICreateFeedback } from '@v1Feedback/interfaces';
 import type { JSONSchemaType, Schema } from 'ajv';
+import { type ICreateFeedback, feedbackTypesList } from '../../interfaces/index.js';
 
 export const createFeedbackSchema: Schema | JSONSchemaType<ICreateFeedback> = {
   '$schema': 'http://json-schema.org/draft-07/schema#',

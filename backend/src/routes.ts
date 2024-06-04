@@ -1,6 +1,6 @@
-import { responseApiHello } from '@responses';
 import { Router, type Request, type Response } from 'express';
-import { apiV1Endpoints } from './v1/routes';
+import { responseApiHello } from './core/responses/index.js';
+import { apiV1Endpoints } from './v1/routes.js';
 
 export const apiEndpoints: Router = Router();
 

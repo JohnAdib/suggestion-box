@@ -1,4 +1,4 @@
-import type { FeedbackTypesType } from './feedback-types';
+import type { FeedbackTypesType } from "./index.js";
 
 export interface ICreateFeedback {
   name: string;

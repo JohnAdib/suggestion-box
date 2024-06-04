@@ -1,5 +1,5 @@
-import { createFeedbackService } from './create-feedback';
-import { listFeedbacksService } from './list-feedbacks';
+import { createFeedbackService } from './create-feedback/index.js';
+import { listFeedbacksService } from './list-feedbacks/index.js';
 
 export const v1FeedbackService = {
   create: createFeedbackService,

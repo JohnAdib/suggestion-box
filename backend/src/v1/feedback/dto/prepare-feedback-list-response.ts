@@ -1,5 +1,6 @@
-import type { ICreateFeedback, ISavedFeedback } from '@v1Feedback/interfaces';
-import { prepareFeedbackResponse } from './prepare-feedback-response';
+import type { ICreateFeedback, ISavedFeedback } from "../interfaces/index.js";
+import { prepareFeedbackResponse } from "./prepare-feedback-response.js";
+
 
 export function prepareFeedbackListResponses(
   savedFeedbacks: ISavedFeedback[],

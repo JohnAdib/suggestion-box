@@ -1,11 +1,9 @@
-import type {
-  IListFeedback,
-  ISavedFeedback,
-} from '@v1Feedback/interfaces';
-import { feedbackModel } from '@v1Feedback/models';
-import { buildQuery } from './build-query';
-import { buildSimplePagination } from './build-simple-pagination';
-import { buildSort } from './build-sort';
+import type { IListFeedback } from '../../interfaces/i-list-feedback.js';
+import type { ISavedFeedback } from '../../interfaces/i-saved-feedback.js';
+import { feedbackModel } from '../../models/index.js';
+import { buildQuery } from './build-query.js';
+import { buildSimplePagination } from './build-simple-pagination.js';
+import { buildSort } from './build-sort.js';
 
 export const listFeedbacks =
 async ({ page, limit, type, orderby, order }: IListFeedback)

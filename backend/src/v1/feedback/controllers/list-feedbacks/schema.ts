@@ -1,10 +1,5 @@
-import type { IListFeedback } from '@v1Feedback/interfaces';
-import {
-  feedbackOrderbyList,
-  feedbackOrderList,
-  feedbackTypesList,
-} from '@v1Feedback/interfaces';
 import type { JSONSchemaType, Schema } from 'ajv';
+import { feedbackOrderbyList, feedbackOrderList, feedbackTypesList, type IListFeedback } from '../../interfaces/index.js';
 
 export const listFeedbackSchema: Schema | JSONSchemaType<IListFeedback> = {
   '$schema': 'http://json-schema.org/draft-07/schema#',

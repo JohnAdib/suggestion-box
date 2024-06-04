@@ -1,6 +1,6 @@
-import type { IError, IResponseJson } from '@interfaces';
-import { logger } from '@logger';
 import type { NextFunction, Request, Response } from 'express';
+import type { IError, IResponseJson } from '../interfaces/index.js';
+import { logger } from '../logger/index.js';
 
 export const errorHandling = (
   err: IError,
