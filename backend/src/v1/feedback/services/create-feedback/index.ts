@@ -4,7 +4,6 @@ import { prepareFeedbackResponse } from '../../dto/prepare-feedback-response.js'
 import type { ICreateFeedback } from '../../interfaces/index.js';
 import { v1FeedbackRepository } from '../../repositories/index.js';
 
-
 export async function createFeedbackService(
   inputData: ICreateFeedback,
 ):Promise<IResponseJson> {

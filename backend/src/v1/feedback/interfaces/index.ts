@@ -13,7 +13,7 @@ export type {
   IListFeedback,
   IListFeedbackFilter,
   IListFeedbackPagination,
-  IListFeedbackSort
+  IListFeedbackSort,
 } from './i-list-feedback.js';
 
 export type { ISavedFeedback } from './i-saved-feedback.js';

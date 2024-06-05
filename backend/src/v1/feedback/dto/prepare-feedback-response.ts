@@ -2,8 +2,11 @@ import Filter from 'bad-words';
 import type { ICreateFeedback, ISavedFeedback } from '../interfaces/index.js';
 
 export function prepareFeedbackResponse(
-  savedFeedback: ISavedFeedback,
-): ICreateFeedback {
+  savedFeedback: ISavedFeedback | null,
+): ICreateFeedback | null {
+  if (!savedFeedback) {
+    return null;
+  }
   const {
     name = '[No name!]',
     email = '[No email!]',
@@ -14,8 +17,9 @@ export function prepareFeedbackResponse(
 
   const filter = new Filter();
 
-  const filteredFeedback =
+  const filteredFeedback: ICreateFeedback =
    {
+     id: savedFeedback._id.toString(),
      name: filter.clean(name),
      email: filter.clean(email),
      type,

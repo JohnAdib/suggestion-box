@@ -7,7 +7,7 @@ import { buildSort } from './build-sort.js';
 
 export const listFeedbacks =
 async ({ page, limit, type, orderby, order }: IListFeedback)
-: Promise<ISavedFeedback[]> => {
+: Promise<ISavedFeedback[] | null> => {
   const query = buildQuery({ type });
   const sort = buildSort({ orderby, order });
   // TODO: if we have a lot of data, we should consider using a cursor-based pagination
@@ -17,5 +17,4 @@ async ({ page, limit, type, orderby, order }: IListFeedback)
     .sort(sort)
     .skip(skip)
     .limit(limit);
-
 };

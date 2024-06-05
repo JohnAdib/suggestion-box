@@ -17,12 +17,12 @@ export async function listFeedbacksService(
     page: inputData.page,
     perPage: inputData.limit,
     totalPages: totalPages,
-    count: formattedFeedbacks.length,
+    count: formattedFeedbacks?.length,
     totalCount: totalfeedbackCounts,
   };
 
   // if the feedbacks are found, return them
-  if (formattedFeedbacks.length) {
+  if (formattedFeedbacks?.length) {
     const apiResponse: IResponseJson = {
       okay: true,
       result: formattedFeedbacks,

@@ -1,5 +1,5 @@
-import type { ICreateFeedback, ISavedFeedback } from "../../interfaces/index.js";
-import { feedbackModel } from "../../models/index.js";
+import type { ICreateFeedback, ISavedFeedback } from '../../interfaces/index.js';
+import { feedbackModel } from '../../models/index.js';
 
 export const createFeedback =
 async (feedbackData: ICreateFeedback)

@@ -1,5 +1,4 @@
-import type { IResponseJsonMessage } from "../interfaces/i-response-json-message.js";
-
+import type { IResponseJsonMessage } from '../interfaces/i-response-json-message.js';
 
 export class ValidationGroupMessages extends Error {
 

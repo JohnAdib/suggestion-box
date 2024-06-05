@@ -4,12 +4,13 @@ import { logger } from '../logger/index.js';
 export async function connectToMongoDb(
   dbUri: string | undefined,
 ): Promise<void> {
+  logger.verbose('Connecting to MongoDB. ' + dbUri);
   if (!dbUri) {
     logger.warn('Skipping DB connection! URI is not provided! 🤷');
     return;
   }
 
-  mongoose.connect(dbUri)
+  await mongoose.connect(dbUri)
     .then(() => {
       logger.info('Connected to Db! Warm up the dance floor!');
     })
