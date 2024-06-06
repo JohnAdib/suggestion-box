@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "redhat.vscode-yaml",
     "DavidAnson.vscode-markdownlint",
+    "vitest.explorer",
     "bradlc.vscode-tailwindcss",
   ]
 }

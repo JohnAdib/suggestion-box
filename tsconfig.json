@@ -21,13 +21,19 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
+    "types": [
+      "vitest/globals"
+    ]
   },
   "include": [
+    "**/*.js",
     "**/*.ts",
     "**/*.mts",
   ],
   "exclude": [
-    "node_modules",
+    "**/node_modules",
     "**/dist",
+    "**/.turbo",
+    "**/logs",
   ]
 }
