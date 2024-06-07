@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import type { IResponseJson } from '../../../../core/interfaces/index.js';
 import { validateWithSchema } from '../../../../core/validator/index.js';
-import type { IListFeedback } from '../../interfaces/index.js';
+import type { IFilterListFeedback } from '../../interfaces/index.js';
 import { v1FeedbackService } from '../../services/index.js';
 import { listFeedbackSchema } from './schema.js';
 
@@ -9,8 +9,8 @@ export const listFeedbackController = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const inputData = req.query as unknown as IListFeedback;
-  const validatedData: IListFeedback = validateWithSchema({
+  const inputData = req.query as unknown as IFilterListFeedback;
+  const validatedData: IFilterListFeedback = validateWithSchema({
     schema: listFeedbackSchema,
     data: inputData,
   });
@@ -23,7 +23,14 @@ export const listFeedbackController = async (
     orderby = 'date',
     type,
   } = validatedData;
-  const updatedData: IListFeedback = { page, limit, order, orderby, type };
+
+  const updatedData: IFilterListFeedback = {
+    page,
+    limit,
+    order,
+    orderby,
+    type,
+  };
 
   const feedbacks = await v1FeedbackService.list(updatedData);
 

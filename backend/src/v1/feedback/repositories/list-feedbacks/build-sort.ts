@@ -1,12 +1,12 @@
 import type { SortOrder } from 'mongoose';
-import type { FeedbackOrderbyType, IListFeedbackSort } from '../../interfaces/index.js';
+import type { FeedbackOrderbyType, IFilterListFeedbackSort } from '../../interfaces/index.js';
 
 interface IBuildSort {
   [key: string]: SortOrder
 }
 
 export const buildSort =
-({ orderby, order }: IListFeedbackSort)
+({ orderby, order }: IFilterListFeedbackSort)
 :IBuildSort => {
   const myFilter: FeedbackOrderbyType = orderby;
 

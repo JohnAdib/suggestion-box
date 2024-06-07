@@ -1,11 +1,11 @@
 import { error } from '../../../../core/errors/index.js';
 import type { IResponseJson, IResponseJsonMeta } from '../../../../core/interfaces/index.js';
 import { prepareFeedbackListResponses } from '../../dto/prepare-feedback-list-response.js';
-import type { IListFeedback } from '../../interfaces/index.js';
+import type { IFilterListFeedback } from '../../interfaces/index.js';
 import { v1FeedbackRepository } from '../../repositories/index.js';
 
 export async function listFeedbacksService(
-  inputData: IListFeedback,
+  inputData: IFilterListFeedback,
 ): Promise<IResponseJson> {
   const feedbacks = await v1FeedbackRepository.list(inputData);
   const formattedFeedbacks = prepareFeedbackListResponses(feedbacks);

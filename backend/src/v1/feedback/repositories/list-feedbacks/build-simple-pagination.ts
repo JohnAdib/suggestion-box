@@ -1,7 +1,7 @@
-import type { IListFeedbackPagination } from '../../interfaces/index.js';
+import type { IFilterListFeedbackPagination } from '../../interfaces/index.js';
 
 export const buildSimplePagination =
-({ page, limit }: IListFeedbackPagination)
+({ page, limit }: IFilterListFeedbackPagination)
 : number => {
   if (!page || !limit) {
     return 0;

@@ -1,7 +1,7 @@
 import type { JSONSchemaType, Schema } from 'ajv';
-import type { IGetFeedback } from '../../interfaces/i-get-feedback.js';
+import type { IFilterGetFeedback } from '../../interfaces/index.js';
 
-export const getFeedbackSchema: Schema | JSONSchemaType<IGetFeedback> = {
+export const getFeedbackSchema: Schema | JSONSchemaType<IFilterGetFeedback> = {
   '$schema': 'http://json-schema.org/draft-07/schema#',
   'title': 'getFeedbacks',
   'type': 'object',

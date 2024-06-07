@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import type { IResponseJson } from '../../../../core/interfaces/index.js';
 import { validateWithSchema } from '../../../../core/validator/index.js';
-import type { IGetFeedback } from '../../interfaces/i-get-feedback.js';
+import type { IFilterGetFeedback } from '../../interfaces/index.js';
 import { v1FeedbackService } from '../../services/index.js';
 import { getFeedbackSchema } from './schema.js';
 
@@ -9,8 +9,8 @@ export const getFeedbackController = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const inputData = req.params as unknown as IGetFeedback;
-  const validatedData: IGetFeedback = validateWithSchema({
+  const inputData = req.params as unknown as IFilterGetFeedback;
+  const validatedData: IFilterGetFeedback = validateWithSchema({
     schema: getFeedbackSchema,
     data: inputData,
   });

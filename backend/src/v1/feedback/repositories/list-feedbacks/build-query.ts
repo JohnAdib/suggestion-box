@@ -1,7 +1,7 @@
-import type { IListFeedbackFilter, ISavedFeedback } from '../../interfaces/index.js';
+import type { IFilterListFeedbackFilter, ISavedFeedback } from '../../interfaces/index.js';
 
 export const buildQuery =
-({ type }: IListFeedbackFilter)
+({ type }: IFilterListFeedbackFilter)
 : Partial<ISavedFeedback> => {
   const query: Partial<ISavedFeedback> = {};
   if (type) {

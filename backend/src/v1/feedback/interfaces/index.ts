@@ -9,11 +9,13 @@ export type { FeedbackTypesType } from './feedback-types.js';
 
 export type { ICreateFeedback } from './i-create-feedback.js';
 
+export type { IFilterGetFeedback } from './i-filter-get-feedback.js';
+
 export type {
-  IListFeedback,
-  IListFeedbackFilter,
-  IListFeedbackPagination,
-  IListFeedbackSort,
-} from './i-list-feedback.js';
+  IFilterListFeedback,
+  IFilterListFeedbackFilter,
+  IFilterListFeedbackPagination,
+  IFilterListFeedbackSort,
+} from './i-filter-list-feedback.js';
 
 export type { ISavedFeedback } from './i-saved-feedback.js';

@@ -16,7 +16,6 @@ export const createFeedbackController = async (
   });
 
   const sanitizedData: ICreateFeedback = {
-    id: validatedData.id,
     name: xss(validatedData.name.trim()),
     email: xss(validatedData.email.trim().toLowerCase()),
     type: validatedData.type,
