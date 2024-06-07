@@ -4,6 +4,7 @@
     "redhat.vscode-yaml",
     "DavidAnson.vscode-markdownlint",
     "vitest.explorer",
+    "Vue.volar",
     "bradlc.vscode-tailwindcss",
   ]
 }

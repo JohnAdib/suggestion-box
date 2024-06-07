@@ -1,37 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "outDir": "dist",
-    "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "noUncheckedIndexedAccess": true,
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-    "verbatimModuleSyntax": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "types": [
-      "vitest/globals"
-    ]
-  },
-  "include": [
-    "**/*.ts",
-    "vite.config.js",
-    "**/*.mts",
-  ],
-  "exclude": [
-    "node_modules",
-    "**/dist",
-  ]
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json"
 }
