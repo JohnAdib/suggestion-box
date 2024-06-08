@@ -1,21 +1,23 @@
-import { ref } from 'vue'
-import { IFeedbackForm } from '@/interfaces/feedback-form'
-import { IErrors } from '@/interfaces/errors'
-import { validateFeedbackForm } from '@/utils/validate-feedback-form'
+import type { IErrors } from '@/interfaces/i-errors'
+import type { IFeedbackForm } from '@/interfaces/i-feedback-form'
 import { submitFeedbackForm } from '@/utils/submit-feedback-form'
+import { validateFeedbackForm } from '@/utils/validate-feedback-form'
+import { ref } from 'vue'
 
 export default function useFeedbackForm() {
   const form = ref<IFeedbackForm>({
     name: '',
     email: '',
-    feedbackType: 'bug',
+    type: 'bug',
+    title: '',
     message: ''
   })
 
   const errors = ref<IErrors>({
     name: '',
     email: '',
-    feedbackType: '',
+    type: '',
+    title: '',
     message: ''
   })
 
@@ -25,9 +27,10 @@ export default function useFeedbackForm() {
   ]
 
   const validateAndSubmit = async (): Promise<void> => {
+    console.log("form.value", form.value);
     if (validateFeedbackForm(form.value, errors.value)) {
       await submitFeedbackForm(form.value)
-      form.value = { name: '', email: '', feedbackType: 'bug', message: '' }
+      // form.value = { name: '', email: '', type: '', title: '', message: '' }
     }
   }
 

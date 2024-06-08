@@ -1,24 +1,15 @@
+<!-- TODO: auto height -->
 <template>
-  <div class="mb-4">
-    <Label :id="id" :text="label" />
-    <textarea
-      :id="id"
-      v-model="value"
-      @input="$emit('update:modelValue', $event.target.value)"
-      class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-    ></textarea>
-    <span v-if="error" class="text-red-500 text-sm">{{ error }}</span>
+  <div :class="containerClass">
+    <FormLabel :id :required>{{ label }}</FormLabel>
+    <textarea :id :required :value @input="updateValue"
+      class="block w-full border border-slate-200 rounded transition focus:border-teal-500 px-4 py-1 leading-6 h-fit min-h-24 max-h-80 focus:outline-none"></textarea>
+    <FormErrorMsg :msg="error" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Label from './Label.vue'
-
 export default defineComponent({
-  components: {
-    Label
-  },
   props: {
     id: {
       type: String,
@@ -30,10 +21,25 @@ export default defineComponent({
     },
     value: {
       type: String,
-      required: true
+      default: ''
     },
-    error: String
+    required: {
+      type: Boolean,
+      default: false
+    },
+    error: {
+      type: String,
+      default: ''
+    },
+    containerClass: {
+      type: String,
+      default: ''
+    }
   },
-  emits: ['update:modelValue']
+  methods: {
+    updateValue(event) {
+      this.$emit('update:value', event.target.value);
+    }
+  }
 })
 </script>

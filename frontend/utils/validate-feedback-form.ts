@@ -27,6 +27,12 @@ export function validateFeedbackForm(form: FeedbackForm, errors: IErrors): boole
     isValid = false
   }
 
+  if (!form.title.trim()) {
+    errors.title = 'Title is required'
+    isValid = false
+  }
+
+
   if (!form.message.trim()) {
     errors.message = 'Message is required'
     isValid = false

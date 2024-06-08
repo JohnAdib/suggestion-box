@@ -1,6 +1,7 @@
 export interface IErrors {
   name?: string;
   email?: string;
-  feedbackType?: string;
+  type?: string;
+  title?: string;
   message?: string;
 }
