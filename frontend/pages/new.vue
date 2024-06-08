@@ -13,7 +13,8 @@
       <FormInput v-model="form.title" id="title" label="Title" :error="errors.title" />
       <FormTextarea v-model="form.message" id="message" label="Message" :error="errors.message" :required="true" />
       <div class="flex gap-4 justify-end">
-        <FormButton type="reset" buttonStyle="secondary">
+        <!-- TODO: reset the error messages -->
+        <FormButton type="reset" ButtonStyleType="secondary">
           Discard
         </FormButton>
         <FormButton type="submit">

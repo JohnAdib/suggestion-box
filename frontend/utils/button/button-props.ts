@@ -1,10 +1,10 @@
 import { type PropType } from 'vue'
-import { ButtonStyle } from './button-style'
+import type { ButtonStyleType } from './button-style-type'
 
 export const buttonProps = {
-  buttonStyle: {
-    type: String as PropType<ButtonStyle>,
-    default: ButtonStyle.Primary
+  ButtonStyleType: {
+    type: String as PropType<ButtonStyleType>,
+    default: "primary"
   },
   disabled: Boolean,
   ariaLabel: String,

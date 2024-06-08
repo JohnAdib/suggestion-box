@@ -1,10 +1,9 @@
 import { computed } from 'vue';
-import { ButtonStyle } from './button-style';
+import type { ButtonStyleType } from './button-style-type';
 
 interface IButtonLogicOptions {
-  buttonStyle: ButtonStyle;
+  ButtonStyleType: ButtonStyleType;
   disabled: boolean;
-  loading: boolean;
 }
 
 interface IButtonLogic {
@@ -15,7 +14,7 @@ export function ButtonLogic(props: IButtonLogicOptions)
   : IButtonLogic {
   const btnClass = computed(() => {
     let baseClass = 'text-sm px-4 md:px-5 py-2 leading-6 transition rounded hover:focus:outline-none focus:ring-2 focus:ring-opacity-50 select-none hover:opacity-70 focus:opacity-90'
-    switch (props.buttonStyle) {
+    switch (props.ButtonStyleType) {
       case 'primary':
         return `${baseClass} text-white bg-emerald-400`
       case 'secondary':

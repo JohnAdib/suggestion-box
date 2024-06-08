@@ -20,7 +20,7 @@ const headerLinks = [
 
       <nav class="flex gap-5">
         <LinkButton v-for="link in headerLinks" :key="link.href" :href="link.href"
-          :buttonStyle="buttonStyle(link.href).value" :ariaLabel="link.label">
+          :ButtonStyleType="buttonStyle(link.href).value" :ariaLabel="link.label">
           {{ link.label }}
         </LinkButton>
       </nav>

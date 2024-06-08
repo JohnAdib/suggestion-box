@@ -44,8 +44,8 @@ export default defineComponent({
     }
   },
   methods: {
-    updateValue(event) {
-      this.$emit('update:value', event.target.value);
+    updateValue(event: Event) {
+      this.$emit('update:value', (event.target as HTMLInputElement).value);
     }
   }
 })
