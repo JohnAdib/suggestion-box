@@ -8,7 +8,7 @@
         containerClass="max-w-xs" />
       <FormInput v-model="form.email" id="email" label="Email" type="email" :error="errors.email" autocomplete="email"
         containerClass="max-w-xs" />
-      <FormSelect v-model="form.type" id="type" label="Type" :options="feedbackOptions" :error="errors.type"
+      <FormSelect v-model="form.type" id="type" label="Type" :options="feedbackTypes" :error="errors.type"
         containerClass="max-w-xs" />
       <FormInput v-model="form.title" id="title" label="Title" :error="errors.title" />
       <FormTextarea v-model="form.message" id="message" label="Message" :error="errors.message" :required="true" />
@@ -27,15 +27,16 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import useFeedbackForm from '@/composables/use-feedback-form'
+import { feedbackTypes } from '@/interfaces/feedback-types'
 
 export default defineComponent({
   setup() {
-    const { form, errors, feedbackOptions, validateAndSubmit } = useFeedbackForm()
+    const { form, errors, validateAndSubmit } = useFeedbackForm()
 
     return {
       form,
       errors,
-      feedbackOptions,
+      feedbackTypes,
       validateAndSubmit
     }
   }

@@ -3,7 +3,7 @@
     <FormLabel :id :required>{{ label }}</FormLabel>
     <select :id :required :value @input="updateValue"
       class="block w-full border border-slate-200 rounded transition focus:border-teal-500 px-4 py-1 leading-6 h-9 focus:outline-none select-none">
-      <option v-if="!value" value="">Please select {{ label }}</option>
+      <option disabled value="">Please select {{ label }}</option>
       <option v-for="option in options" :key="option.value" :value="option.value">{{ option.text }}</option>
     </select>
     <FormErrorMsg :msg="error" />

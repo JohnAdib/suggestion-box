@@ -11,7 +11,7 @@ export default function useFeedbackForm() {
     type: 'bug',
     title: '',
     message: ''
-  })
+  });
 
   const errors = ref<IErrors>({
     name: '',
@@ -19,14 +19,10 @@ export default function useFeedbackForm() {
     type: '',
     title: '',
     message: ''
-  })
-
-  const feedbackOptions = [
-    { value: 'bug', text: 'Bug' },
-    { value: 'suggestion', text: 'Suggestion' }
-  ]
+  });
 
   const validateAndSubmit = async (): Promise<void> => {
+    console.log("form", form);
     console.log("form.value", form.value);
     if (validateFeedbackForm(form.value, errors.value)) {
       await submitFeedbackForm(form.value)
@@ -37,7 +33,6 @@ export default function useFeedbackForm() {
   return {
     form,
     errors,
-    feedbackOptions,
     validateAndSubmit
   }
 }

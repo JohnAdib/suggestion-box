@@ -1,6 +1,8 @@
-import { IFeedbackForm } from '@/interfaces/feedback-form'
+import type { IFeedbackForm } from "@/interfaces/i-feedback-form"
 
-export async function submitFeedbackForm(form: IFeedbackForm): Promise<boolean> {
+
+export async function submitFeedbackForm(form: IFeedbackForm)
+  : Promise<boolean> {
   try {
     const response = await fetch('/v1/feedback', {
       method: 'POST',

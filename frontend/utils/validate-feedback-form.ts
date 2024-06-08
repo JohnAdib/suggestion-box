@@ -1,44 +1,23 @@
-import { FeedbackForm, IErrors } from '@/interfaces/feedback-form'
-import { validEmail } from '@/utils/validate-email'
+import type { IErrors } from '@/interfaces/i-errors'
+import type { IFeedbackForm } from '@/interfaces/i-feedback-form'
 
-export function validateFeedbackForm(form: FeedbackForm, errors: IErrors): boolean {
+export function validateFeedbackForm(form: IFeedbackForm, errors: IErrors): boolean {
   errors.name = ''
   errors.email = ''
-  errors.feedbackType = ''
+  errors.type = ''
   errors.message = ''
 
   let isValid = true
 
-  if (!form.name.trim()) {
-    errors.name = 'Name is required'
+  const message = form.message?.trim()
+  if (!message) {
+    errors.message = 'What would you like to say? We are all ears! Please write something!'
     isValid = false
   }
-
-  if (!form.email.trim()) {
-    errors.email = 'Email is required'
-    isValid = false
-  } else if (!validEmail(form.email)) {
-    errors.email = 'Email is not valid'
-    isValid = false
-  }
-
-  if (!form.feedbackType.trim()) {
-    errors.feedbackType = 'Feedback Type is required'
-    isValid = false
-  }
-
-  if (!form.title.trim()) {
-    errors.title = 'Title is required'
-    isValid = false
-  }
-
-
-  if (!form.message.trim()) {
-    errors.message = 'Message is required'
+  else if (message.length < 10) {
+    errors.message = 'Your message is too short! We would like to hear more from you!'
     isValid = false
   }
 
   return isValid
 }
-
-
