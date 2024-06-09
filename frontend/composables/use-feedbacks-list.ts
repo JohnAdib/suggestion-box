@@ -8,8 +8,8 @@ export interface IUseFeedbacksList {
 }
 
 export function useFeedbacksList(): IUseFeedbacksList {
-  let feedbacksList = ref<IFeedbackResponse[]>([]);
-  let feedbacksMeta = ref<IResponseJsonMeta | undefined>({});
+  let feedbacksList = ref<IFeedbackResponse[] | undefined>(undefined);
+  let feedbacksMeta = ref<IResponseJsonMeta | undefined>(undefined);
 
   onMounted(async () => {
     const apiResponse = await fetchFeedbacksList();

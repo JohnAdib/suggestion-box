@@ -5,7 +5,7 @@ export function handleFetchError(error: Error) {
   const errorMessage = error.message || defaultMsg;
 
   swal({
-    title: 'Error on communication with server!',
+    title: 'Communication Error!',
     text: errorMessage,
     icon: 'error',
   });

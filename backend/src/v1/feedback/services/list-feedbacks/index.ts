@@ -12,6 +12,14 @@ export async function listFeedbacksService(
 
   // create a meta object for the response
   const totalfeedbackCounts = await v1FeedbackRepository.total();
+  // if there are no filter and no feedbacks means there are no feedbacks at all!
+  const isEmptyForTheFirstTime = totalfeedbackCounts === 0;
+  if (isEmptyForTheFirstTime) {
+    throw new error.client
+      .NotFound('Anybody out there? It seems our suggestion box is feeling lonely. Could you drop a line?')
+      .setTitle('Echo! Echo! Echo!');
+  }
+
   const totalPages = Math.ceil(totalfeedbackCounts / inputData.limit);
   const apiResponseMeta: IResponseJsonMeta = {
     page: inputData.page,
@@ -29,15 +37,6 @@ export async function listFeedbacksService(
       meta: apiResponseMeta,
     };
     return apiResponse;
-  }
-
-  // if there are no filter and no feedbacks means there are no feedbacks at all!
-  const isEmptyForTheFirstTime = totalfeedbackCounts === 0;
-  if (isEmptyForTheFirstTime) {
-    throw new error.client
-      .NotFound('It seems our suggestion box is feeling lonely. Could you drop a line?')
-      .setTitle('Echo! Echo! Echo! Anybody out there?')
-      .setMeta(apiResponseMeta);
   }
 
   throw new error.client
