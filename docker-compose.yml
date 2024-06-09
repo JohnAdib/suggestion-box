@@ -7,8 +7,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "${PORT_API}:7011"
-    command: ["npm", "run", "start"]
+      - "${PORT_API}:${PORT_API}"
     environment:
       - VERSION=${VERSION}
       - PORT=${PORT_API}
@@ -23,7 +22,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "${PORT}:7010"
+      - "${PORT}:${PORT}"
     environment:
       - VERSION=${VERSION}
       - PORT=${PORT}
@@ -36,5 +35,6 @@ services:
     volumes:
       - ./data:/data/db
     # Warning: we are exposing the port to the host machine
+    # for development purposes only
     ports:
       - "27017:27017"

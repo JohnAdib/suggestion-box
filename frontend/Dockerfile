@@ -10,14 +10,14 @@ COPY package*.json ./
 # Step 4: Install dependencies
 RUN npm install
 
-# Step 5: Copy the rest of your application code
+# Step 5: Copy the rest of application code
 COPY . .
 
-# Step 6: Build your Nuxt application
+# Step 6: Build Nuxt application
 RUN npm run build
 
-# Step 7: Expose the port your app runs on
-EXPOSE 7010
+# Step 7: Expose the port app runs on
+EXPOSE $PORT
 
-# Step 8: Define the command to run your app
+# Step 8: Define the command to run app
 CMD ["npm", "start"]

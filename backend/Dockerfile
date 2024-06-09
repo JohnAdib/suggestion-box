@@ -13,8 +13,11 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Expose the port
-EXPOSE 7011
+# Build the backend server
+RUN npm run build
 
-# Command to run the backend server
-CMD ["npm", "run", "build"]
+# Expose the port
+EXPOSE $PORT
+
+# Command to run the app
+CMD ["npm", "start"]
