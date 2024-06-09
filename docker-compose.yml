@@ -7,11 +7,11 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "${PORT}:${PORT}"
+      - "${PORT_API}:${PORT_API}"
     command: ["npm", "run", "start"]
     environment:
       - VERSION=${VERSION}
-      - PORT=${PORT}
+      - PORT=${PORT_API}
       # interact with mongo container in the same network
       - MONGODB_URI=mongodb://mongo:27017/suggestion-box
     restart: on-failure
@@ -31,6 +31,6 @@ services:
     image: mongo
     volumes:
       - ./data:/data/db
-    # expose the port to the host machine if needed
+    # Warning: we are exposing the port to the host machine
     ports:
       - "27017:27017"

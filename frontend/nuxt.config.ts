@@ -1,20 +1,25 @@
-import yaml from "@rollup/plugin-yaml";
+import yaml from '@rollup/plugin-yaml';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "@nuxt/image"],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts', '@nuxt/image'],
   googleFonts: {
     families: {
       Inter: true,
-    }
+    },
   },
   typescript: {
-    typeCheck: false
+    typeCheck: false,
   },
   vite: {
     plugins: [
-      yaml()
-    ]
-  }
-})
+      yaml(),
+    ],
+  },
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.NUXT_PUBLIC_API_BASE,
+    },
+  },
+});

@@ -2,31 +2,41 @@ import type { IErrors } from '@/interfaces/i-errors';
 import type { IFeedbackForm } from '@/interfaces/i-feedback-form';
 import swal from 'sweetalert';
 
+export function validateFeedbackForm(
+  form: IFeedbackForm,
+  errors: IErrors,
+): boolean {
+  errors.name = '';
+  errors.email = '';
+  errors.type = '';
+  errors.title = '';
+  errors.message = '';
 
-export function validateFeedbackForm(form: IFeedbackForm, errors: IErrors): boolean {
-  errors.name = ''
-  errors.email = ''
-  errors.type = ''
-  errors.message = ''
+  let isValid = true;
 
-  let isValid = true
+  // example of error without blocking the form submission
+  const title = form.title?.trim();
+  if (!title) {
+    errors.title = 'Title will help us understand your feedback better!';
+  }
 
-  const message = form.message?.trim()
+  // example of blocking error
+  const message = form.message?.trim();
   if (!message) {
-    errors.message = 'What would you like to say? We are all ears! Please write something!'
-    isValid = false
-  }
-  else if (message.length < 10) {
-    errors.message = 'Your message is too short! We would like to hear more from you!'
-    isValid = false
+    errors.message = 'What would you like to say? We are all ears! Please write something!';
+    isValid = false;
+  } else if (message.length < 10) {
+    errors.message = 'Your message is too short! We would like to hear more from you!';
+    isValid = false;
   }
 
+  // show a user friendly alert if form is invalid
   if (!isValid) {
     swal({
-      title: "Validation Error!",
-      text: "Please check the form for any errors and try again.",
-      icon: "warning",
+      title: 'Validation Error!',
+      text: 'Please check the form for any errors and try again.',
+      icon: 'warning',
     });
   }
-  return isValid
+  return isValid;
 }

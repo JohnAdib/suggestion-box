@@ -26,9 +26,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import useFeedbackForm from '@/composables/use-feedback-form'
-import { feedbackTypes } from '@/interfaces/feedback-types'
+import useFeedbackForm from '@/composables/use-feedback-form';
+import { feedbackTypes } from '@/interfaces/feedback-types';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {

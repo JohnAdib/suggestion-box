@@ -1,38 +1,48 @@
-import type { IFeedbackForm } from "@/interfaces/i-feedback-form";
+import type { IFeedbackForm } from '@/interfaces/i-feedback-form';
 import swal from 'sweetalert';
 
 export async function submitFeedbackForm(form: IFeedbackForm)
   : Promise<boolean> {
   try {
-    const response = await fetch('/v1/feedback', {
+
+    const config = useRuntimeConfig();
+
+    console.log('Runtime config:', config);
+    if (import.meta.server) {
+      console.log('API base:', config.public.apiBase);
+    }
+
+    const apiBase = config.public.apiBase;
+    console.error('apiBase', apiBase);
+    const response = await fetch(apiBase + '/v1/feedback', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(form)
-    })
+      body: JSON.stringify(form),
+    });
 
     if (!response.ok) {
-      throw new Error('Network response was not ok')
+      throw new Error('Network response was not ok');
     }
 
     const data = await response.json();
     swal({
-      title: "Good job!",
-      text: "Feedback submitted successfully!",
-      icon: "success",
+      title: 'Good job!',
+      text: 'Feedback submitted successfully!',
+      icon: 'success',
     });
-    console.log("apiResponse", data);
+    console.log('apiResponse', data);
     return data;
   } catch (error: any) {
-    const defaultMsg = "Something went wrong! Please try again.";
+    const defaultMsg = 'Something went wrong! Please try again.';
     const errorMessage = error.message || defaultMsg;
 
     swal({
-      title: "Error on Sending Feedback!",
+      title: 'Error on Sending Feedback!',
       text: errorMessage,
-      icon: "error",
+      icon: 'error',
     });
-    return false
+    return false;
   }
 }

@@ -48,8 +48,8 @@ export default defineComponent({
     },
   },
   methods: {
-    updateValue(event) {
-      this.$emit('update:modelValue', event.target.value);
+    updateValue(event: Event) {
+      this.$emit('update:modelValue', (event.target as HTMLInputElement).value);
     }
   }
 })

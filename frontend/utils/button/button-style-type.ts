@@ -1,1 +1,1 @@
-export type ButtonStyleType = "primary" | "secondary";
+export type ButtonStyleType = 'primary' | 'secondary';

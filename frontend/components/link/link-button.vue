@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import { ButtonLogic } from '@/utils/button/button-logic'
-import { buttonProps } from '@/utils/button/button-props'
+import { ButtonLogic } from '@/utils/button/button-logic';
+import { buttonProps } from '@/utils/button/button-props';
 
 export default defineComponent({
   props: {
