@@ -2,6 +2,8 @@
 
 *Suggestion Box* is a simple and intuitive platform that allows users to create and submit bug reports or suggestions. Users can choose to provide their name and email or submit feedback anonymously. SuggestionBox provides a seamless experience to easily submit feedbacks.
 
+<https://www.loom.com/share/e63e364e5148414580c5ca33d4f94e18?sid=4c66da72-d48e-4a44-8428-04cd9bad6f8a>
+
 ## Technologies
 
 Suggestion Box utilizes a modern technology stack to ensure a reliable, efficient, and scalable platform, incorporating the latest tools and best practices in web development for both the backend and frontend.
