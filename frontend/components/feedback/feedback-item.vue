@@ -1,5 +1,6 @@
 <template>
-  <li class="flex gap-2 p-2 py-3 rounded transition hover:bg-slate-200 cursor-pointer select-none"
+  <li :class="{ 'bg-[#EAF0F6]': isActive }"
+    class="flex gap-2 p-2 py-3 rounded transition hover:bg-stone-200 cursor-pointer select-none"
     @click="navigateToFeedback(data?.id)">
     <div class="flex-none">
       <FeedbackIcon :type="data?.type" />
@@ -32,6 +33,7 @@ export default defineComponent({
     data: {
       type: Object as PropType<IFeedbackResponse> | undefined,
     },
+    isActive: Boolean
   },
   setup() {
     const router = useRouter();

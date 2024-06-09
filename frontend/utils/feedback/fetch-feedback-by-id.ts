@@ -4,9 +4,18 @@ import { getApiBase } from '@/utils/fetch/get-api-base';
 import { handleApiResponseMessage } from '@/utils/fetch/handle-api-response-message';
 import { handleFetchError } from '@/utils/fetch/handle-fetch-error';
 
-export async function fetchFeedbacksList(): Promise<IResponseJson> {
+export async function fetchFeedbackById(
+  id: string | string[] | undefined,
+): Promise<IResponseJson> {
+  if (!id) {
+    throw new Error('Invalid id!' + id);
+  }
+  if (Array.isArray(id)) {
+    throw new Error('Please provide a single id!');
+  }
+
   try {
-    const apiUrl = getApiBase() + '/v1/feedback';
+    const apiUrl = getApiBase() + '/v1/feedback/' + id;
     const response = await fetch(apiUrl, {
       method: 'GET',
       headers: {

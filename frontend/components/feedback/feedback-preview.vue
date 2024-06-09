@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-prose">
+  <div class="max-w-prose w-full">
     <div class="text-xs text-slate-500 font-medium mb-1.5">
       {{ timeAgo(data?.createdAt) }}
     </div>

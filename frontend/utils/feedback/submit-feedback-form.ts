@@ -8,7 +8,8 @@ import { handleFetchError } from '../fetch/handle-fetch-error';
 export async function submitFeedbackForm(form: IFeedbackForm)
   : Promise<IResponseJson> {
   try {
-    const response = await fetch(getApiBase() + '/v1/feedback', {
+    const apiUrl = getApiBase() + '/v1/feedback';
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
