@@ -1,5 +1,5 @@
-import type { IFeedbackForm } from "@/interfaces/i-feedback-form"
-
+import type { IFeedbackForm } from "@/interfaces/i-feedback-form";
+import swal from 'sweetalert';
 
 export async function submitFeedbackForm(form: IFeedbackForm)
   : Promise<boolean> {
@@ -16,12 +16,23 @@ export async function submitFeedbackForm(form: IFeedbackForm)
       throw new Error('Network response was not ok')
     }
 
-    const data = await response.json()
-    alert('Feedback submitted successfully!')
-    return true
-  } catch (error) {
-    console.error(error)
-    alert('An error occurred while submitting your feedback.')
+    const data = await response.json();
+    swal({
+      title: "Good job!",
+      text: "Feedback submitted successfully!",
+      icon: "success",
+    });
+    console.log("apiResponse", data);
+    return data;
+  } catch (error: any) {
+    const defaultMsg = "Something went wrong! Please try again.";
+    const errorMessage = error.message || defaultMsg;
+
+    swal({
+      title: "Error on Sending Feedback!",
+      text: errorMessage,
+      icon: "error",
+    });
     return false
   }
 }

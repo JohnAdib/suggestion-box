@@ -1,5 +1,7 @@
-import type { IErrors } from '@/interfaces/i-errors'
-import type { IFeedbackForm } from '@/interfaces/i-feedback-form'
+import type { IErrors } from '@/interfaces/i-errors';
+import type { IFeedbackForm } from '@/interfaces/i-feedback-form';
+import swal from 'sweetalert';
+
 
 export function validateFeedbackForm(form: IFeedbackForm, errors: IErrors): boolean {
   errors.name = ''
@@ -19,5 +21,12 @@ export function validateFeedbackForm(form: IFeedbackForm, errors: IErrors): bool
     isValid = false
   }
 
+  if (!isValid) {
+    swal({
+      title: "Validation Error!",
+      text: "Please check the form for any errors and try again.",
+      icon: "warning",
+    });
+  }
   return isValid
 }
