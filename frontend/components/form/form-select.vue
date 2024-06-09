@@ -1,5 +1,5 @@
 <template>
-  <div :class="containerClass">
+  <div :class="class">
     <FormLabel :id :required>{{ label }}</FormLabel>
     <select :id :required :value="modelValue" @input="updateValue"
       class="block w-full border border-slate-200 rounded transition focus:border-teal-500 px-4 py-1 leading-6 h-9 focus:outline-none select-none">
@@ -38,7 +38,7 @@ export default defineComponent({
       type: String,
       default: ''
     },
-    containerClass: {
+    class: {
       type: String,
       default: ''
     }
