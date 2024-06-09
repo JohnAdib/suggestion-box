@@ -37,8 +37,9 @@ watch(() => route.query.id, async (selectedId) => {
       class="sm:col-span-4 lg:col-span-5 bg-white flex items-center1 justify-center p-4 md:p-6 py-10 md:py-14 lg:py-16 xl:py-20">
       <FeedbackPreview v-if="selectedFeedback" :data="selectedFeedback" />
       <FeedbackPreviewUnselected v-else-if="feedbacksList" />
-      <FeedbackPreviewUnselected v-else />
+      <FeedbackPreviewEmpty v-else />
     </section>
   </div>
-  <FeedbackWelcome v-else />
+  <FeedbackWelcome v-else-if="feedbacksList === null" />
+  <FeedbackLoading v-else />
 </template>
