@@ -43,5 +43,7 @@ export const errorHandling = (
   const logLevel = errStatusCode >= 500 ? 'error' : 'verbose';
   logger.log(logLevel, errTitle, apiResponse);
 
+  logger.debug(err.stack);
+
   res.status(errStatusCode).json(apiResponse);
 };

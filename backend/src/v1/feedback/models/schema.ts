@@ -4,11 +4,9 @@ import { feedbackTypesList } from '../interfaces/index.js';
 export const FeedbackDbSchema: Schema = new Schema({
   name: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
-    required: true,
   },
   type: {
     type: String,
@@ -17,7 +15,6 @@ export const FeedbackDbSchema: Schema = new Schema({
   },
   title: {
     type: String,
-    required: true,
   },
   message: {
     type: String,

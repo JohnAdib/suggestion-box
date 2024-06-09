@@ -22,25 +22,25 @@ interface IvalidateWithSchema<T> {
  * @returns validated data
  */
 export const validateWithSchema =
-<T>({ schema, data, combineErrors } : IvalidateWithSchema<T>)
-: T => {
-  const ajv = new Ajv({
-    allErrors: true,
-    coerceTypes: true,
-  });
-  addFormats.default(ajv);
+  <T>({ schema, data, combineErrors }: IvalidateWithSchema<T>): T => {
+    const ajv = new Ajv({
+      allErrors: true,
+      coerceTypes: true,
+    });
+    addFormats.default(ajv);
 
-  const validateFunction: ValidateFunction<T> = ajv.compile(schema);
-  const valid = validateFunction(data);
+    const validateFunction: ValidateFunction<T> = ajv.compile(schema);
 
-  if (valid) {
-    return data;
-  }
+    const valid = validateFunction(data);
 
-  const errorsMessages = ajvTransformValidationErrors({
-    validate: validateFunction,
-    combineErrors,
-  });
+    if (valid) {
+      return data;
+    }
 
-  throw new error.client.ValidationGroupMessages(errorsMessages);
-};
+    const errorsMessages = ajvTransformValidationErrors({
+      validate: validateFunction,
+      combineErrors,
+    });
+
+    throw new error.client.ValidationGroupMessages(errorsMessages);
+  };

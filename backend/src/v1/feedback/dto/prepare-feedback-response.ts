@@ -9,26 +9,26 @@ export function prepareFeedbackResponse(
     return null;
   }
   const {
-    name = '[No name!]',
-    email = '[No email!]',
+    name,
+    email,
     type,
-    title = '[No title!]',
-    message = '[No message!]',
+    title,
+    message = '[Empty message, huh?]',
     createdAt,
   } = savedFeedback;
 
   const filter = new Filter();
 
   const filteredFeedback: IFeedbackResponse =
-   {
-     id: savedFeedback._id.toString(),
-     name: filter.clean(name.trim()),
-     email: filter.clean(email).trim(),
-     type,
-     title: filter.clean(title.trim()),
-     message: filter.clean(message.trim()),
-     createdAt,
-   };
+  {
+    id: savedFeedback?._id?.toString(),
+    name: name ? filter.clean(name) : undefined,
+    email: email ? filter.clean(email) : undefined,
+    type,
+    title: title ? filter.clean(title) : undefined,
+    message: filter.clean(message),
+    createdAt,
+  };
 
   return filteredFeedback;
 }
