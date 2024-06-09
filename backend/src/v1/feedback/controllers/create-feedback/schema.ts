@@ -8,7 +8,6 @@ export const createFeedbackSchema: Schema | JSONSchemaType<ICreateFeedback> = {
   'properties': {
     'name': {
       'type': 'string',
-      'minLength': 1,
       'maxLength': 100,
     },
     'email': {
@@ -23,7 +22,6 @@ export const createFeedbackSchema: Schema | JSONSchemaType<ICreateFeedback> = {
     },
     'title': {
       'type': 'string',
-      'minLength': 1,
       'maxLength': 100,
     },
     'message': {

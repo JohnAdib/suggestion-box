@@ -18,7 +18,7 @@ export const listFeedbackController = async (
   let {
     page = 1,
     limit = 10,
-    order = 'asc',
+    order = 'desc',
     orderby = 'date',
     type,
   } = validatedData;

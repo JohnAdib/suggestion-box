@@ -2,7 +2,7 @@
   <footer class="hidden sm:block border-t border-slate-200 px-2 md:px-4 select-none flex-none text-slate-500">
     <div class="mx-auto flex flex-wrap items-center justify-between h-16">
       <div>
-        Empowering your voice with every suggestion.
+        Empowering your voice with every feedback.
       </div>
       <div>
         <NuxtLink target="_blank" href="https://github.com/JohnAdib/suggestion-box/"
