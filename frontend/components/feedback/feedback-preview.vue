@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-prose w-full">
+  <div class="max-w-prose w-full pl-10 md:px-10">
     <div class="text-xs text-slate-500 font-medium mb-1.5">
       {{ timeAgo(data?.createdAt) }}
     </div>
@@ -18,7 +18,7 @@
       </template>
       <span v-else class="text-stone-500">[Anonymous Feedback]</span>
     </div>
-    <div class="font-normal text-slate-800 leading-normal whitespace-pre-wrap">
+    <div class="font-normal text-slate-800 leading-normal overflow-hidden whitespace-pre-wrap">
       {{ data?.message }}
     </div>
   </div>

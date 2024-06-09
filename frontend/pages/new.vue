@@ -1,6 +1,6 @@
 <template>
   <section
-    class="mx-auto my-2 border border-slate-200 rounded select-none shadow-lg max-w-xs sm:max-w-lg md:max-w-screen-sm lg:max-w-screen-md md:mx-auto">
+    class="mx-auto my-2 md:my-4 border border-slate-200 rounded select-none shadow-lg max-w-xs sm:max-w-lg md:max-w-screen-sm lg:max-w-screen-md md:mx-auto">
     <h1 class="text-xl md:text-2xl font-medium px-4 md:px-10 py-3 md:py-5 border-b border-slate-200">
       Add new feedback
     </h1>

@@ -19,7 +19,7 @@ const headerLinks = [
         </h1>
       </NuxtLink>
 
-      <nav class="flex gap-5">
+      <nav class="flex gap-2 md:gap-5">
         <LinkButton v-for="link in headerLinks" :key="link.href" :href="link.href"
           :ButtonStyleType="buttonStyle(link.href).value" :ariaLabel="link.label">
           {{ link.label }}
