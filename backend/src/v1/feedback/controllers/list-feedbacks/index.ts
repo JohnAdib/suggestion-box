@@ -1,5 +1,4 @@
 import type { Request, Response } from 'express';
-import type { IResponseJson } from '../../../../core/interfaces/index.js';
 import { validateWithSchema } from '../../../../core/validator/index.js';
 import type { IFilterListFeedback } from '../../interfaces/index.js';
 import { v1FeedbackService } from '../../services/index.js';
@@ -32,12 +31,7 @@ export const listFeedbackController = async (
     type,
   };
 
-  const feedbacks = await v1FeedbackService.list(updatedData);
-
-  const apiResponse: IResponseJson = {
-    okay: true,
-    result: feedbacks,
-  };
+  const apiResponse = await v1FeedbackService.list(updatedData);
 
   res.status(200).send(apiResponse);
 };
