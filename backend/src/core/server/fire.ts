@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express, { type Application } from 'express';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
@@ -17,6 +18,7 @@ export function fireHappyServer({
   happyServer.disable('etag');
 
   // middlewares
+  happyServer.use(cors());
   happyServer.use(helmet());
   happyServer.use(middleware.customHeaders);
   happyServer.use(express.json());
