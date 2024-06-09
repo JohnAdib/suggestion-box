@@ -1,5 +1,5 @@
 <template>
-  <button :type :aria-label="ariaLabel" :disabled :class="btnClass" @click="$emit('click')">
+  <button :type :aria-label="ariaLabel" :disabled :class="btnClass" @click="handleClick">
     <slot></slot>
   </button>
 </template>
@@ -15,10 +15,18 @@ export default defineComponent({
       type: String as PropType<'button' | 'submit' | 'reset'>,
       default: 'button'
     },
+    onClick: Function as PropType<() => void>
   },
   setup(props) {
     const { btnClass } = ButtonLogic(props)
-    return { btnClass }
+
+    const handleClick = () => {
+      if (props.onClick) {
+        props.onClick();
+      }
+    };
+
+    return { btnClass, handleClick }
   }
 })
 </script>

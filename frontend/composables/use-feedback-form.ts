@@ -21,16 +21,21 @@ export default function useFeedbackForm() {
     message: '',
   };
 
-  const form = ref<IFeedbackForm>(emptyForm);
-  const errors = ref<IErrors>(emptyErrors);
+  const form = ref<IFeedbackForm>({ ...emptyForm });
+  const errors = ref<IErrors>({ ...emptyErrors });
+
+  const resetForm = (): void => {
+    form.value = { ...emptyForm };
+    errors.value = { ...emptyErrors };
+  };
 
   const validateAndSubmit = async (): Promise<void> => {
     if (validateFeedbackForm(form.value, errors.value)) {
       const apiResponseJson = await submitFeedbackForm(form.value);
 
+      // if the form was submitted successfully, reset the form and errors
       if (apiResponseJson && apiResponseJson.okay) {
-        errors.value = emptyErrors;
-        form.value = emptyForm;
+        resetForm();
       }
     }
   };
@@ -39,5 +44,6 @@ export default function useFeedbackForm() {
     form,
     errors,
     validateAndSubmit,
+    resetForm,
   };
 }
