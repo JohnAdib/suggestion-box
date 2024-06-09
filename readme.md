@@ -78,6 +78,7 @@ Open your web browser and navigate to [localhost:7020](http://localhost:7020). I
 http://localhost:7020
 ```
 
+![Welcome to the suggestion box](doc/suggestion-box-welcome.png)
 ![Homepage of the suggestion box](doc/suggestion-box-home.png)
 ![Add a new feedback](doc/suggestion-box-new.png)
 
