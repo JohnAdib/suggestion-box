@@ -4,16 +4,8 @@ import swal from 'sweetalert';
 export async function submitFeedbackForm(form: IFeedbackForm)
   : Promise<boolean> {
   try {
-
     const config = useRuntimeConfig();
-
-    console.log('Runtime config:', config);
-    if (import.meta.server) {
-      console.log('API base:', config.public.apiBase);
-    }
-
     const apiBase = config.public.apiBase;
-    console.error('apiBase', apiBase);
     const response = await fetch(apiBase + '/v1/feedback', {
       method: 'POST',
       headers: {
@@ -22,18 +14,28 @@ export async function submitFeedbackForm(form: IFeedbackForm)
       body: JSON.stringify(form),
     });
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+    let apiResponseJson;
+    try {
+      apiResponseJson = await response.json();
+    } catch (error) {
+      swal({
+        title: 'Error on Sending Feedback!',
+        text: 'Error parsing response from server!',
+        icon: 'error',
+      });
+      return false;
     }
+    const alertIcon = apiResponseJson.okay ? 'success' : 'error';
 
-    const data = await response.json();
+    // TODO: move to a separate function and handle multiple messages
+    const firstMessage = apiResponseJson.messages?.[0];
     swal({
-      title: 'Good job!',
-      text: 'Feedback submitted successfully!',
-      icon: 'success',
+      title: firstMessage.title,
+      text: firstMessage.msg,
+      icon: alertIcon,
     });
-    console.log('apiResponse', data);
-    return data;
+
+    return apiResponseJson;
   } catch (error: any) {
     const defaultMsg = 'Something went wrong! Please try again.';
     const errorMessage = error.message || defaultMsg;
