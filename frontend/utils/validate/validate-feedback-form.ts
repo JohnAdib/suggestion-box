@@ -14,12 +14,6 @@ export function validateFeedbackForm(
 
   let isValid = true;
 
-  // example of error without blocking the form submission
-  const title = form.title?.trim();
-  if (!title) {
-    errors.title = 'Title will help us understand your feedback better!';
-  }
-
   // example of blocking error
   const message = form.message?.trim();
   if (!message) {
@@ -28,6 +22,14 @@ export function validateFeedbackForm(
   } else if (message.length < 10) {
     errors.message = 'Your message is too short! We would like to hear more from you!';
     isValid = false;
+  }
+
+  if (errors.message) {
+    // example of error without blocking the form submission
+    const title = form.title?.trim();
+    if (!title) {
+      errors.title = 'Title will help us categorize your feedback!';
+    }
   }
 
   // show a user friendly alert if form is invalid

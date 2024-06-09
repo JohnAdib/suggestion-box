@@ -1,12 +1,14 @@
 import type { IFeedbackForm } from '@/interfaces/i-feedback-form';
-import swal from 'sweetalert';
+import type { IResponseJson } from '~/interfaces/i-response-json';
+import { convertResponseToJson } from './fetch/convert-response-to-json';
+import { getApiBase } from './fetch/get-api-base';
+import { handleApiResponseMessage } from './fetch/handle-api-response-message';
+import { handleFetchError } from './fetch/handle-fetch-error';
 
 export async function submitFeedbackForm(form: IFeedbackForm)
-  : Promise<boolean> {
+  : Promise<IResponseJson> {
   try {
-    const config = useRuntimeConfig();
-    const apiBase = config.public.apiBase;
-    const response = await fetch(apiBase + '/v1/feedback', {
+    const response = await fetch(getApiBase() + '/v1/feedback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -14,37 +16,12 @@ export async function submitFeedbackForm(form: IFeedbackForm)
       body: JSON.stringify(form),
     });
 
-    let apiResponseJson;
-    try {
-      apiResponseJson = await response.json();
-    } catch (error) {
-      swal({
-        title: 'Error on Sending Feedback!',
-        text: 'Error parsing response from server!',
-        icon: 'error',
-      });
-      return false;
-    }
-    const alertIcon = apiResponseJson.okay ? 'success' : 'error';
+    const apiResJson: IResponseJson = await convertResponseToJson(response);
+    handleApiResponseMessage(apiResJson);
 
-    // TODO: move to a separate function and handle multiple messages
-    const firstMessage = apiResponseJson.messages?.[0];
-    swal({
-      title: firstMessage.title,
-      text: firstMessage.msg,
-      icon: alertIcon,
-    });
-
-    return apiResponseJson;
+    return apiResJson;
   } catch (error: any) {
-    const defaultMsg = 'Something went wrong! Please try again.';
-    const errorMessage = error.message || defaultMsg;
-
-    swal({
-      title: 'Error on Sending Feedback!',
-      text: errorMessage,
-      icon: 'error',
-    });
-    return false;
+    handleFetchError(error);
+    throw error;
   }
 }
