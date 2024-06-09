@@ -12,27 +12,29 @@ The project is structured as a [monorepo](https://monorepo.tools/) using [TurboR
 
 ### Backend
 
-- **Express.js**: Fast, unopinionated, minimalist web framework for Node.js.
-- **Mongoose**: Elegant MongoDB object modeling for Node.js.
-- **MongoDB**: NoSQL database for storing data.
-- **TypeScript**: Typed superset of JavaScript that compiles to plain JavaScript.
-- **AJV**: Another JSON Schema Validator.
-- **Vitest**: A blazing fast unit-test framework powered by Vite.
-- **Winston**: A versatile logging library.
-- **Swagger**: API documentation tool.
-- **ESLint**: Pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript.
+- **[Express.js](https://expressjs.com/)**: Fast, unopinionated, minimalist web framework for Node.js.
+- **[TypeScript](https://www.typescriptlang.org/)**: Typed superset of JavaScript that compiles to plain JavaScript.
+- **[MongoDB](https://www.mongodb.com/)**: NoSQL database for storing data.
+- **[Mongoose](https://mongoosejs.com/)**: Elegant MongoDB object modeling for Node.js.
+- **[AJV](https://ajv.js.org/)**: JSON Schema Validator for security and reliability of JavaScript applications
+- **[Vitest](https://vitest.dev/)**: A blazing fast unit-test framework powered by Vite.
+- **[Winston](https://github.com/winstonjs/winston)**: A versatile logging library.
+- **[Swagger](https://swagger.io/)**: API documentation tool.
+- **[ESLint](https://eslint.org/)**: Pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript.
 
 ### Frontend
 
-- **Vue 3**: The Progressive JavaScript Framework.
-- **Nuxt**: The Intuitive Vue Framework.
-- **TypeScript**: Typed superset of JavaScript that compiles to plain JavaScript.
-- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-- **ESLint**: Pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript.
-- **Vitest**: A blazing fast unit-test framework powered by Vite.
-- **Storybook**: UI component explorer for frontend developers.
+- **[Vue](https://vuejs.org/)**: The Progressive JavaScript Framework. Version 3.
+- **[Nuxt](https://nuxt.com/)**: The Intuitive Vue Framework.
+- **[TypeScript](https://www.typescriptlang.org/)**: Typed superset of JavaScript that compiles to plain JavaScript.
+- **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for rapid UI development.
+- **[ESLint](https://eslint.org/)**: Pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript.
+- **[Vitest](https://vitest.dev/)**: A blazing fast unit-test framework powered by Vite.
+- **[Storybook](https://storybook.js.org/)**: Frontend workshop for building isolated UI components.
 
 ## Install
+
+The project is dockerized for easy installation and deployment.
 
 ### 1. Clone the project repository
 
@@ -70,14 +72,44 @@ If you wann to double check, open Docker Desktop. You should see three container
 
 ### 5. Access the application
 
-Open your web browser and navigate to [localhost:7020](http://localhost:7020). If you've configured a different port in your `.env` file, replace 7020 with the appropriate port number. You should now see the Suggestion Box application running in your browser.
+Open your web browser and navigate to [localhost:7020](http://localhost:7020). If you've configured a different port in your `.env` file, replace `7020` with the appropriate port number. You should now see the Suggestion Box application running in your browser.
 
 ```text
 http://localhost:7020
 ```
 
 ![Homepage of the suggestion box](doc/suggestion-box-home.png)
+![Add a new feedback](doc/suggestion-box-new.png)
 
-## TODO
+## Run Locally
 
-- [ ] Add Storybook
+To run the project locally for development, you can use `npm` and `TurboRepo` to manage both the frontend and backend. Make sure `MongoDB` is installed on your system, or alternatively, you can use Docker to simplify the setup.
+
+First install the project dependencies
+
+```bash
+npm i
+```
+
+Then run the following command to start both the frontend and backend servers concurrently. This command uses TurboRepo to manage the monorepo structure.
+
+```bash
+npm run dev
+```
+
+## Future Improvement Checklist
+
+- [ ] Add more tests for improved code coverage.
+- [ ] Implement Storybook for UI component development.
+- [ ] Add pagination functionality in UI.
+- [ ] Add filtering functionality in UI.
+- [ ] Add sorting functionality in UI.
+- [ ] Improve accessibility features.
+- [ ] Improve accessibility features.
+- [ ] Optimize frontend and backend performance.
+- [ ] Integrate CI/CD pipelines for automated deployment.
+- [ ] Set page title and description
+- [ ] Add social media meta and image
+- [ ] Add a favicon for a more polished user experience.
+- [ ] Optimize UI codes by moving repeated UI elements into separate components.
+- [ ] Explore additional features based on user feedback.
