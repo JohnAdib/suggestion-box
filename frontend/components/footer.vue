@@ -1,12 +1,18 @@
 <template>
-  <footer class="border-t border-slate-200 px-2 md:px-4 select-none flex-none">
+  <footer class="hidden sm:block border-t border-slate-200 px-2 md:px-4 select-none flex-none text-slate-500">
     <div class="mx-auto flex flex-wrap items-center justify-between h-16">
       <div>
-        Created by <NuxtLink target="_blank" href="https://resume.mradib.com" class="text-emerald-800">MrAdib</NuxtLink>
+        Empowering your voice with every suggestion.
       </div>
       <div>
         <NuxtLink target="_blank" href="https://github.com/JohnAdib/suggestion-box/"
-          class="text-gray-800 hover:text-gray-600">View the Source on GitHub</NuxtLink>
+          class="transition hover:text-slate-700">GitHub
+          Source</NuxtLink>
+        |
+        <NuxtLink target="_blank" href="https://resume.mradib.com" class="transition hover:text-slate-700">
+          MrAdib
+        </NuxtLink>
+
       </div>
     </div>
   </footer>
