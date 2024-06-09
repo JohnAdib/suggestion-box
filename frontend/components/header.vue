@@ -10,7 +10,7 @@ const headerLinks = [
 
 <template>
   <header class="border-b border-slate-200 px-2 md:px-4 select-none overflow-hidden flex-none">
-    <div class="container mx-auto flex flex-wrap items-center justify-between h-16">
+    <div class="mx-auto flex flex-wrap items-center justify-between h-16">
       <NuxtLink href="/" class="text-2xl font-bold text-slate-900 flex items-center gap-2">
         <NuxtImg src="/logo/logo.png" alt="Suggestion Box" class="h-12 w-12" />
         <h1 class="text-lg font-bold text-emerald-800 hidden md:block">
