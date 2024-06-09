@@ -14,12 +14,12 @@ test('should prepare feedback response correctly', () => {
   };
 
   const expectedResponse = {
-    id: mockSavedFeedback._id.toString(),
-    name: mockSavedFeedback.name.trim(),
-    email: mockSavedFeedback.email.trim(),
-    type: mockSavedFeedback.type.trim(),
-    title: mockSavedFeedback.title.trim(),
-    message: mockSavedFeedback.message.trim(),
+    id: mockSavedFeedback._id?.toString(),
+    name: mockSavedFeedback.name?.trim(),
+    email: mockSavedFeedback.email?.trim(),
+    type: mockSavedFeedback.type?.trim(),
+    title: mockSavedFeedback.title?.trim(),
+    message: mockSavedFeedback.message?.trim(),
     createdAt: mockSavedFeedback.createdAt,
   };
 

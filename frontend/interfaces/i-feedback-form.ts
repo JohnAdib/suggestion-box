@@ -1,7 +1,7 @@
 export interface IFeedbackForm {
-  name: string;
-  email: string;
+  name?: string;
+  email?: string;
   type: string;
-  title: string;
+  title?: string;
   message: string;
 }

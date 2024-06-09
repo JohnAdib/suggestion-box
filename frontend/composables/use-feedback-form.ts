@@ -6,10 +6,10 @@ import { ref } from 'vue';
 
 export default function useFeedbackForm() {
   const form = ref<IFeedbackForm>({
-    name: '',
-    email: '',
+    name: undefined,
+    email: undefined,
     type: 'bug',
-    title: '',
+    title: undefined,
     message: '',
   });
 

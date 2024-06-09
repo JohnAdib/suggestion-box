@@ -1,9 +1,10 @@
 import { validateWithSchema } from '../../../../core/validator/index.js';
+import type { ICreateFeedback } from '../../interfaces/i-create-feedback.js';
 import { createFeedbackSchema } from './schema.js';
 
 describe('createFeedbackSchema', () => {
   test('should validate feedback correctly', () => {
-    const mockFeedback = {
+    const mockFeedback: ICreateFeedback = {
       name: 'Test User',
       email: 'testuser@example.com',
       type: 'bug',
@@ -29,7 +30,7 @@ describe('createFeedbackSchema', () => {
   });
 
   test('error for empty value', async () => {
-    const mockFeedback = {
+    const mockFeedback: ICreateFeedback = {
       name: 'Test User',
       email: 'testuser@example.com',
       type: 'bug',
@@ -44,7 +45,7 @@ describe('createFeedbackSchema', () => {
   });
 
   test('error for invalid email', () => {
-    const mockFeedback = {
+    const mockFeedback: ICreateFeedback = {
       name: 'Test User',
       email: 'invalid email',
       type: 'bug',
@@ -59,7 +60,7 @@ describe('createFeedbackSchema', () => {
   });
 
   test('error for missing message', () => {
-    const mockFeedback = {
+    const mockFeedback: Partial<ICreateFeedback> = {
       name: 'Test User',
       email: 'testuser@example.com',
       type: 'bug',
@@ -73,7 +74,7 @@ describe('createFeedbackSchema', () => {
   });
 
   test('error for long name', () => {
-    const mockFeedback = {
+    const mockFeedback: ICreateFeedback = {
       name: 'Test User'.repeat(100),
       email: 'testuser@example.com',
       type: 'bug',
