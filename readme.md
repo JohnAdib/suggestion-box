@@ -99,6 +99,8 @@ npm run dev
 
 ## Future Improvement Checklist
 
+Due to time constraints, some planned features and improvements were not implemented in the current version of Suggestion Box.
+
 - [ ] Add more tests for improved code coverage.
 - [ ] Implement Storybook for UI component development.
 - [ ] Add pagination functionality in UI.
@@ -112,4 +114,5 @@ npm run dev
 - [ ] Add social media meta and image
 - [ ] Add a favicon for a more polished user experience.
 - [ ] Optimize UI codes by moving repeated UI elements into separate components.
+- [ ] Implement type checking for TypeScript in Nuxt.
 - [ ] Explore additional features based on user feedback.
