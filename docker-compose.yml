@@ -7,7 +7,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "${PORT_API}:${PORT_API}"
+      - "${PORT_API}:7011"
     command: ["npm", "run", "start"]
     environment:
       - VERSION=${VERSION}
@@ -18,14 +18,18 @@ services:
     depends_on:
       - mongo
 
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "7002:7002"
-  #   depends_on:
-  #     - backend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT}:7010"
+    environment:
+      - VERSION=${VERSION}
+      - PORT=${PORT}
+      - NUXT_PUBLIC_API_BASE=http://localhost:${PORT_API}
+    depends_on:
+      - backend
 
   mongo:
     image: mongo
