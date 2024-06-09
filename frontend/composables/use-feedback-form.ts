@@ -1,6 +1,6 @@
 import type { IErrors } from '@/interfaces/i-errors';
 import type { IFeedbackForm } from '@/interfaces/i-feedback-form';
-import { submitFeedbackForm } from '@/utils/submit-feedback-form';
+import { submitFeedbackForm } from '@/utils/feedback/submit-feedback-form';
 import { validateFeedbackForm } from '@/utils/validate/validate-feedback-form';
 import { ref } from 'vue';
 
@@ -21,10 +21,12 @@ export default function useFeedbackForm() {
     message: '',
   };
 
+  // sperad the empty form and errors to avoid reference sharing
   const form = ref<IFeedbackForm>({ ...emptyForm });
   const errors = ref<IErrors>({ ...emptyErrors });
 
   const resetForm = (): void => {
+    // reset the form and errors to their initial values
     form.value = { ...emptyForm };
     errors.value = { ...emptyErrors };
   };
