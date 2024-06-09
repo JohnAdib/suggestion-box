@@ -16,6 +16,10 @@ watch(() => route.query.id, async (selectedId) => {
       console.error('Error fetching feedback by ID:', error);
     }
   }
+  else {
+    activeFeedbackId.value = null;
+    selectedFeedback.value = undefined;
+  }
 }, { deep: true, immediate: true });
 
 
@@ -32,6 +36,7 @@ watch(() => route.query.id, async (selectedId) => {
     <section
       class="sm:col-span-4 lg:col-span-5 bg-white flex items-center1 justify-center p-4 md:p-6 py-10 md:py-14 lg:py-16 xl:py-20">
       <FeedbackPreview v-if="selectedFeedback" :data="selectedFeedback" />
+      <FeedbackPreviewUnselected v-else-if="feedbacksList" />
       <FeedbackPreviewEmpty v-else />
     </section>
   </div>
