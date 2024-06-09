@@ -6,7 +6,7 @@ import { v1FeedbackRepository } from '../../repositories/index.js';
 
 export async function createFeedbackService(
   inputData: ICreateFeedback,
-):Promise<IResponseJson> {
+): Promise<IResponseJson> {
   // check for duplicate message
   const duplicateMessageCount = await v1FeedbackRepository
     .numberOfDuplicateMessage({ message: inputData.message });
@@ -16,17 +16,19 @@ export async function createFeedbackService(
       .setTitle('Deja vu!');
   }
 
-  // prevent spamming by checking recent activity
-  const recentActivityWithinMinutes = 1;
-  const emailRecentActivityCount = await v1FeedbackRepository
-    .numberOfEmailRecentActivity({
-      email: inputData.email,
-      minutes: recentActivityWithinMinutes,
-    });
-  if (emailRecentActivityCount) {
-    throw new error.client
-      .TooManyRequests("Whoa there, Speedy Gonzales! Let's take a breather, shall we?")
-      .setTitle('Hold Your Horses!');
+  // prevent spamming by checking recent activity of the email
+  if (inputData.email) {
+    const recentActivityWithinMinutes = 1;
+    const emailRecentActivityCount = await v1FeedbackRepository
+      .numberOfEmailRecentActivity({
+        email: inputData.email,
+        minutes: recentActivityWithinMinutes,
+      });
+    if (emailRecentActivityCount) {
+      throw new error.client
+        .TooManyRequests("Whoa there, Speedy Gonzales! Let's take a breather, shall we?")
+        .setTitle('Hold Your Horses!');
+    }
   }
 
   // create feedback

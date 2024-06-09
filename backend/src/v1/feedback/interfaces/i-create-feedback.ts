@@ -1,9 +1,9 @@
 import type { FeedbackTypesType } from './index.js';
 
 export interface ICreateFeedback {
-  name: string;
-  email: string;
+  name?: string;
+  email?: string;
   type: FeedbackTypesType;
-  title: string;
+  title?: string;
   message: string;
 }

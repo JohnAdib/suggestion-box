@@ -16,10 +16,10 @@ export const createFeedbackController = async (
   });
 
   const sanitizedData: ICreateFeedback = {
-    name: xss(validatedData.name.trim()),
-    email: xss(validatedData.email.trim().toLowerCase()),
+    name: xss(validatedData.name?.trim() || ''),
+    email: xss(validatedData.email?.trim().toLowerCase() || ''),
     type: validatedData.type,
-    title: xss(validatedData.title.trim()),
+    title: xss(validatedData.title?.trim() || ''),
     message: xss(validatedData.message.trim()),
   };
 

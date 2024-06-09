@@ -28,15 +28,12 @@ export const createFeedbackSchema: Schema | JSONSchemaType<ICreateFeedback> = {
     },
     'message': {
       'type': 'string',
-      'minLength': 1,
+      'minLength': 10,
       'maxLength': 10000,
     },
   },
   'required': [
-    'name',
-    'email',
     'type',
-    'title',
     'message',
   ],
   'additionalProperties': false,
