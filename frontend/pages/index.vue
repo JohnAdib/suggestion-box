@@ -16,7 +16,9 @@ let selectedFeedback = ref<IFeedbackResponse | undefined>({
   createdAt: new Date(),
 });
 const { feedbacksList, feedbacksMeta } = useFeedbacksList();
-console.log("feedbacksMeta", feedbacksMeta);
+// console.log("feedbacksMeta", feedbacksMeta);
+
+
 
 </script>
 

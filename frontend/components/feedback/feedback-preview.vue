@@ -1,8 +1,8 @@
 <template>
   <div class="max-w-prose">
-    <time class="text-xs text-slate-500 font-medium mb-1.5" :datetime="data?.createdAt.toString()">
+    <div class="text-xs text-slate-500 font-medium mb-1.5">
       {{ timeAgo(data?.createdAt) }}
-    </time>
+    </div>
     <div class="relative">
       <span class="absolute -left-8 top-1">
         <FeedbackIcon :type="data?.type" />

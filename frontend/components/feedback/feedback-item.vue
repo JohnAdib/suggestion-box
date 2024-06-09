@@ -1,5 +1,6 @@
 <template>
-  <li :id="data?.id" class="flex gap-2 p-2 py-3 rounded transition hover:bg-slate-200 cursor-pointer select-none">
+  <li class="flex gap-2 p-2 py-3 rounded transition hover:bg-slate-200 cursor-pointer select-none"
+    @click="navigateToFeedback(data?.id)">
     <div class="flex-none">
       <FeedbackIcon :type="data?.type" />
     </div>
@@ -13,9 +14,9 @@
           <span v-else-if="data?.email">({{ data?.email }})</span>
           <span v-else class="text-stone-500">[Anonymous Feedback]</span>
         </div>
-        <time class="text-xs text-slate-500 font-medium" :datetime="data?.createdAt.toString()">
+        <div class="text-xs text-slate-500 font-medium">
           {{ timeAgo(data?.createdAt) }}
-        </time>
+        </div>
       </div>
     </div>
   </li>
@@ -32,8 +33,17 @@ export default defineComponent({
       type: Object as PropType<IFeedbackResponse> | undefined,
     },
   },
+  setup() {
+    const router = useRouter();
+    return { router };
+  },
   methods: {
     timeAgo,
+    navigateToFeedback(id: string | undefined) {
+      if (id) {
+        this.router.push({ path: '/', query: { id: id } });
+      }
+    },
   },
   computed: {
     displayTitle(): string {
