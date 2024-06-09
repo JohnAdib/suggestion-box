@@ -31,7 +31,8 @@ console.log("feedbacksMeta", feedbacksMeta);
       </ul>
     </aside>
     <section class="col-span-5 bg-white flex items-center1 justify-center p-4 md:p-6 pt-10 md:pt-14 lg:pt-16 xl:pt-20">
-      <FeedbackPreview :data="selectedFeedback" />
+      <FeedbackPreview v-if="selectedFeedback" :data="selectedFeedback" />
+      <FeedbackPreviewEmpty v-else />
     </section>
   </div>
 </template>

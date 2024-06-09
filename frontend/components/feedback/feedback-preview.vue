@@ -20,8 +20,8 @@
 </template>
 
 <script lang="ts">
-import type { IFeedbackResponse } from '~/interfaces/i-feedback-response';
-import { timeAgo } from '~/utils/datetime/time-ago';
+import type { IFeedbackResponse } from '@/interfaces/i-feedback-response';
+import { timeAgo } from '@/utils/datetime/time-ago';
 
 
 export default defineComponent({
