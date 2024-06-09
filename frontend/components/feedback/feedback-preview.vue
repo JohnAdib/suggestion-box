@@ -16,7 +16,7 @@
         <span v-if="data?.name">{{ data?.name }}</span>
         <span v-if="data?.email">({{ data?.email }})</span>
       </template>
-      <span v-else class="text-orange-500">[Anonymous Feedback]</span>
+      <span v-else class="text-stone-500">[Anonymous Feedback]</span>
     </div>
     <div class="font-normal text-slate-800 leading-normal whitespace-pre-wrap">
       {{ data?.message }}

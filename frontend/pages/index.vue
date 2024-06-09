@@ -22,12 +22,9 @@ console.log("feedbacksMeta", feedbacksMeta);
 
 <template>
   <div class="grid grid-cols-7 gap-4 h-full">
-    <aside class="col-span-2">
-      <h1>List of feedbacks</h1>
-      <ul id="feedback-list" class="">
-        <li v-for="feedback in feedbacksList" :key="feedback.id">
-          {{ feedback.message }}
-        </li>
+    <aside class="col-span-2 h-full overflow-y-scroll">
+      <ul id="feedback-list" class="flex flex-col gap-2 p-1">
+        <FeedbackItem v-for="feedback in feedbacksList" :key="feedback.id" :data="feedback" />
       </ul>
     </aside>
     <section class="col-span-5 bg-white flex items-center1 justify-center p-4 md:p-6 pt-10 md:pt-14 lg:pt-16 xl:pt-20">
