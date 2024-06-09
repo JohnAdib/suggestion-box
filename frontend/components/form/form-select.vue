@@ -1,7 +1,7 @@
 <template>
   <div :class="containerClass">
     <FormLabel :id :required>{{ label }}</FormLabel>
-    <select :id :required :value @input="updateValue"
+    <select :id :required :value="modelValue" @input="updateValue"
       class="block w-full border border-slate-200 rounded transition focus:border-teal-500 px-4 py-1 leading-6 h-9 focus:outline-none select-none">
       <option disabled value="">Please select {{ label }}</option>
       <option v-for="option in options" :key="option.value" :value="option.value">{{ option.text }}</option>
@@ -26,7 +26,7 @@ export default defineComponent({
       required: true,
       default: () => []
     },
-    value: {
+    modelValue: {
       type: String,
       default: ''
     },
@@ -45,7 +45,7 @@ export default defineComponent({
   },
   methods: {
     updateValue(event: Event) {
-      this.$emit('update:value', (event.target as HTMLInputElement).value);
+      this.$emit('update:modelValue', (event.target as HTMLInputElement).value);
     }
   }
 })

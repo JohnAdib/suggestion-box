@@ -22,8 +22,6 @@ export default function useFeedbackForm() {
   });
 
   const validateAndSubmit = async (): Promise<void> => {
-    console.log("form", form);
-    console.log("form.value", form.value);
     if (validateFeedbackForm(form.value, errors.value)) {
       await submitFeedbackForm(form.value)
       // form.value = { name: '', email: '', type: '', title: '', message: '' }
