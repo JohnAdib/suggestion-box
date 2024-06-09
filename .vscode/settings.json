@@ -1,13 +1,17 @@
 {
     "files.exclude": {
-        // "**/node_modules": true,
-        // "**/.turbo": true,
+        "**/node_modules": true,
+        "**/.turbo": true,
+        "**/.nuxt": true,
+        "**/data": true,
+        "**/dist": true,
         // "**/dist": true,
     },
     "search.exclude": {
         "**/node_modules": true,
         "**/.turbo": true,
         "**/dist": true,
+        "**/logs": true,
         "**/package-lock.json": true,
     },
     "editor.rulers": [
