@@ -100,6 +100,14 @@ Then run the following command to start both the frontend and backend servers co
 npm run dev
 ```
 
+## Testing
+
+Unit tests are written using Vitest. To run the tests, use the following command
+
+```bash
+npm run test
+```
+
 ## Future Improvement Checklist
 
 Due to time constraints, some planned features and improvements were not implemented in the current version of Suggestion Box.
