@@ -1,75 +1,59 @@
-# Nuxt 3 Minimal Starter
+# SuggestionBox Frontend
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Welcome to the frontend documentation of SuggestionBox. This section provides an overview of the frontend architecture, folder structure, and technologies used to build the user interface.
 
-## Setup
+## Technologies
 
-Make sure to install the dependencies:
+The frontend is built with Nuxt.js 3 and TypeScript, leveraging the following technologies
 
-```bash
-# npm
-npm install
+- **Nuxt.js** The Intuitive Vue Framework, which enhances the development experience with features like automatic code splitting, server-side rendering, and powerful plugin system.
+- **TypeScript** A typed superset of JavaScript that compiles to plain JavaScript, ensuring type safety and improved developer experience.
+- **Tailwind CSS** A utility-first CSS framework for rapid UI development, allowing for easy customization and responsive design.
 
-# pnpm
-pnpm install
+## Folder Structure
 
-# yarn
-yarn install
+The frontend application follows a structured approach to organizing files and folders
 
-# bun
-bun install
+```text
+frontend/
+├── assets/
+│   └── css/
+│       └── tailwind.css         # Tailwind CSS file
+├── components/
+│   ├── feedback/               # Feedback-related components
+│   ├── form/                   # Form components
+│   ├── link/                   # Link components
+│   ├── footer.vue              # Footer component
+│   └── header.vue              # Header component
+├── composables/
+│   ├── use-feedback-form.ts    # Composable for feedback form
+│   └── use-feedback-list.ts    # Composable for feedback list
+├── interfaces/                 # TypeScript interfaces
+├── layouts/                    # Layout components
+├── pages/
+│   ├── index.vue               # Home page
+│   └── new.vue                 # New feedback submission page
+├── public/
+│   ├── logo/                   # Logo assets
+│   └── favicon.ico             # Favicon icon
+├── server/                     # Server-related utilities
+└── utils/                      # Utility functions
+    ├── button/
+    ├── datetime/
+    ├── feedback/
+    ├── fetch/
+    └── validate/
+
 ```
 
-## Development Server
+## Folder Descriptions
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- **assets/** Contains static assets like CSS files.
+- **components/** Reusable UI components organized by feature.
+- **composables/** Vue composables for sharing logic across components.
+- **interfaces/** TypeScript interfaces for maintaining type definitions.
+- **layouts/** Layout components that wrap pages.
+- **pages/** Vue components for each route in the application.
+- **public/** Static files like images and icons.
+- **server/** Utilities related to server-side functionality.
+- **utils/** Utility functions organized by functionality.
