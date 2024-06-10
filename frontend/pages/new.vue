@@ -31,12 +31,23 @@ export default defineComponent({
   setup() {
     const { form, errors, resetForm, validateAndSubmit } = useFeedbackForm();
 
+    const pageTitle = "New Feedback";
+    const pageDesc = "Submit your feedback to help us improve our services.";
+
+    useSeoMeta({
+      title: pageTitle,
+      ogTitle: pageTitle,
+      description: pageDesc,
+      ogDescription: pageDesc,
+    })
+
     return {
       form,
       errors,
       feedbackTypes,
       resetForm,
-      validateAndSubmit
+      validateAndSubmit,
+      useSeoMeta,
     }
   }
 })
